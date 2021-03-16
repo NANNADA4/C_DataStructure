@@ -52,11 +52,11 @@ void insert(ArrayListType *L, int pos, element item) {
     } else if ((pos < 0) || (pos > L->length)) {
         error("index error \r\n");
     } else {
-        for (i = L->length - 1; i >= pos; i--) {
+        for (i = (L->length - 1); i >= pos; i--) {
             L->list[i + 1] = L->list[i];
         }
         L->list[pos] = item;
-        printf("ArrayList[%d]애 %d 삽입", pos, item);
+        printf("ArrayList[%d]에 %d 삽입\n", pos, item);
         L->length++;
     }
 }
@@ -64,6 +64,13 @@ void insert(ArrayListType *L, int pos, element item) {
 // ����Ʈ �� �տ� ��� ����
 void insertFirst(ArrayListType *L, element item) {
     // Fill your code
+    int i;
+    for (i = (L->length - 1); i >= 0; i--) {
+        L->list[i + 1] = L->list[i];
+    }
+    L->list[0] = item;
+    printf("ArrayList[0]에 %d 삽입\n", item);
+    L->length++;
 }
 
 // ����Ʈ �� ���� ��� ����
