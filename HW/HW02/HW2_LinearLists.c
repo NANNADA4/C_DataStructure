@@ -49,6 +49,15 @@ void insert(ArrayListType *L, int pos, element item) {
     int i;
     if (isFull(L)) {
         error("list is full\r\n");
+    } else if ((pos < 0) || (pos > L->length)) {
+        error("index error \r\n");
+    } else {
+        for (i = L->length - 1; i >= pos; i--) {
+            L->list[i + 1] = L->list[i];
+        }
+        L->list[pos] = item;
+        printf("ArrayList[%d]애 %d 삽입", pos, item);
+        L->length++;
     }
 }
 
