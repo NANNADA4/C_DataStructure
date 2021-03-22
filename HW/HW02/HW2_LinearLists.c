@@ -65,17 +65,28 @@ void insert(ArrayListType *L, int pos, element item) {
 void insertFirst(ArrayListType *L, element item) {
     // Fill your code
     int i;
-    for (i = (L->length - 1); i >= 0; i--) {
-        L->list[i + 1] = L->list[i];
+    if (isFull(L)) {
+        error("list is full!\n");
+    } else {
+        for (i = (L->length - 1); i >= 0; i--) {
+            L->list[i + 1] = L->list[i];
+        }
+        L->list[0] = item;
+        printf("ArrayList[0]에 %d 삽입\n", item);
+        L->length++;
     }
-    L->list[0] = item;
-    printf("ArrayList[0]에 %d 삽입\n", item);
-    L->length++;
 }
 
 // ����Ʈ �� ���� ��� ����
 void insertLast(ArrayListType *L, element item) {
     // Fill your code
+    int i;
+    if (isFull(L)) {
+        error("list is full!\n");
+    } else {
+        printf("ArrayList[%d]에 %d 삽입\n", L->length, item);
+        L->list[L->length++] = item;
+    }
 }
 
 // ���� �Լ�
@@ -83,16 +94,37 @@ void insertLast(ArrayListType *L, element item) {
 // ��ȯ��: �����Ǵ� �ڷ�
 element delete (ArrayListType *L, int pos) {
     // Fill your code
+    int i;
+    element item;
+    if (isEmpty(L)) {
+        error("is empty\n");
+    } else if ((pos < 0) || (pos > L->length)) {
+        error("index error \n");
+    } else {
+        item = L->list[pos];
+        for (i = pos; i < (L->length); i--) {
+            L->list[i] = L->list[i + 1];
+        }
+        printf("ArrayList[%d]에 %d 삭제\n", pos, item);
+        L->length--;
+    }
 }
 
 // ����Ʈ�� ��� ��� ����
 void clear(ArrayListType *L) {
     // Fill your code
+    L->list == NULL;
+    L->length = 0;
 }
 
 // pos ��ġ�� ��Ҹ� item���� ��ü
 void replace(ArrayListType *L, int pos, element item) {
     // Fill your code
+    if ((pos < 0) || (pos > L->length)) {
+        error("index error \r\n");
+    } else {
+        L->list[pos] = item;
+    }
 }
 
 // item�� ����Ʈ�� �ִ��� �˻�
