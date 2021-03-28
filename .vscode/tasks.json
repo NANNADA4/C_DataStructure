@@ -2,8 +2,8 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc.exe 활성 파일 빌드",
-            "command": "C:\\MyWorkspace\\C\\mingw64\\bin\\gcc.exe",
+            "label": "C/C++: g++.exe 활성 파일 빌드",
+            "command": "C:/MyWorkspace/C/mingw64/bin/g++.exe",
             "args": [
                 "-g",
                 "${file}",
@@ -11,7 +11,7 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "C:/MyWorkspace/C/mingw64/bin"
             },
             "problemMatcher": [
                 "$gcc"

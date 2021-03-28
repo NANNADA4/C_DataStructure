@@ -1,39 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 100  // �迭�� �ִ� ũ��
+#define MAX_SIZE 100  // ?��?? ??? ???
 
 typedef int element;
 typedef struct {
-    element list[MAX_SIZE];  // �迭 ����
-    int length;              // ���� �迭�� ����� �ڷ���� ����
+    element list[MAX_SIZE];  // ?�� ????
+    int length;              // ???? ?��?? ????? ?????? ????
 } ArrayListType;
 
-// ���� ó�� �Լ�
+// ???? ??? ???
 void error(char *message) {
     printf("%s\n", message);
 }
 
-// ����Ʈ �ʱ�ȭ
+// ????? ????
 void init(ArrayListType *L) {
     L->length = 0;
 }
 
-// �� ����Ʈ �˻�
-// ����Ʈ�� ��� ������ 1�� ��ȯ
-// �׷��� ������ 0�� ��ȯ
+// ?? ????? ???
+// ??????? ??? ?????? 1?? ???
+// ????? ?????? 0?? ???
 int isEmpty(ArrayListType *L) {
     return L->length == 0;
 }
 
-// ����Ʈ�� ��ȭ������ �˻�
-// ����Ʈ�� ������ ������ 1�� ��ȯ
-// �׷��� ������ 0�� ��ȯ
+// ??????? ????????? ???
+// ??????? ?????? ?????? 1?? ???
+// ????? ?????? 0?? ???
 int isFull(ArrayListType *L) {
     return L->length == MAX_SIZE;
 }
 
-// ����Ʈ�� ��� ��� ���
+// ??????? ??? ??? ???
 void display(ArrayListType *L) {
     int i;
     printf("===Print Lists===\n");
@@ -41,9 +41,9 @@ void display(ArrayListType *L) {
         printf("ArrayList[%d]: %d\n", i, L->list[i]);
 }
 
-// ���� �Լ�
-// pos: �����ϰ��� �ϴ� ��ġ
-// item: �����ϰ��� �ϴ� �ڷ�
+// ???? ???
+// pos: ????????? ??? ???
+// item: ????????? ??? ???
 void insert(ArrayListType *L, int pos, element item) {
     // Fill your code
     int i;
@@ -56,12 +56,12 @@ void insert(ArrayListType *L, int pos, element item) {
             L->list[i + 1] = L->list[i];
         }
         L->list[pos] = item;
-        printf("ArrayList[%d]에 %d 삽입\n", pos, item);
+        printf("ArrayList[%d]�� %d ����\n", pos, item);
         L->length++;
     }
 }
 
-// ����Ʈ �� �տ� ��� ����
+// ????? ?? ??? ??? ????
 void insertFirst(ArrayListType *L, element item) {
     // Fill your code
     int i;
@@ -72,26 +72,26 @@ void insertFirst(ArrayListType *L, element item) {
             L->list[i + 1] = L->list[i];
         }
         L->list[0] = item;
-        printf("ArrayList[0]에 %d 삽입\n", item);
+        printf("ArrayList[0]�� %d ����\n", item);
         L->length++;
     }
 }
 
-// ����Ʈ �� ���� ��� ����
+// ????? ?? ???? ??? ????
 void insertLast(ArrayListType *L, element item) {
     // Fill your code
     int i;
     if (isFull(L)) {
         error("list is full!\n");
     } else {
-        printf("ArrayList[%d]에 %d 삽입\n", L->length, item);
+        printf("ArrayList[%d]�� %d ����\n", L->length, item);
         L->list[L->length++] = item;
     }
 }
 
-// ���� �Լ�
-// pos: �����ϰ��� �ϴ� ��ġ
-// ��ȯ��: �����Ǵ� �ڷ�
+// ???? ???
+// pos: ????????? ??? ???
+// ?????: ??????? ???
 element delete (ArrayListType *L, int pos) {
     // Fill your code
     int i;
@@ -105,19 +105,19 @@ element delete (ArrayListType *L, int pos) {
         for (i = pos; i < (L->length); i--) {
             L->list[i] = L->list[i + 1];
         }
-        printf("ArrayList[%d]에 %d 삭제\n", pos, item);
+        printf("ArrayList[%d]�� %d ����\n", pos, item);
         L->length--;
     }
 }
 
-// ����Ʈ�� ��� ��� ����
+// ??????? ??? ??? ????
 void clear(ArrayListType *L) {
     // Fill your code
     L->list == NULL;
     L->length = 0;
 }
 
-// pos ��ġ�� ��Ҹ� item���� ��ü
+// pos ????? ???? item???? ???
 void replace(ArrayListType *L, int pos, element item) {
     // Fill your code
     if ((pos < 0) || (pos > L->length)) {
@@ -127,19 +127,19 @@ void replace(ArrayListType *L, int pos, element item) {
     }
 }
 
-// item�� ����Ʈ�� �ִ��� �˻�
-// ����Ʈ�� ������ 1�� ��ȯ
-// �׷��� ������ 0�� ��ȯ
+// item?? ??????? ????? ???
+// ??????? ?????? 1?? ???
+// ????? ?????? 0?? ???
 int isList(ArrayListType *L, element item) {
     // Fill your code
 }
 
-// pos ��ġ�� ��Ҹ� ��ȯ
+// pos ????? ???? ???
 element getItem(ArrayListType *L, int pos) {
     // Fill your code
 }
 
-// ����Ʈ�� ����(�׸��� ����)�� ����
+// ??????? ????(????? ????)?? ????
 int getLength(ArrayListType *L) {
     // Fill your code
 }
@@ -147,8 +147,8 @@ int getLength(ArrayListType *L) {
 int main() {
     ArrayListType *plist;
 
-    // ListType�� �������� �����ϰ� ListType�� ����Ű��
-    // �����͸� �Լ��� �Ķ���ͷ� �����Ѵ�.
+    // ListType?? ???????? ??????? ListType?? ???????
+    // ??????? ????? ??????? ???????.
     plist = (ArrayListType *)malloc(sizeof(ArrayListType));
     init(plist);
     insert(plist, 0, 10);
