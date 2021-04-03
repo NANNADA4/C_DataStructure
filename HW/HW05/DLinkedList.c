@@ -19,8 +19,22 @@ void insert(linkedList* L, listNode* pre, element x) {
     listNode* newNode;
     newNode = (listNode*)malloc(sizeof(listNode));
     newNode->data = x;
-
     // Fill your code
+    if (L->head == NULL) {
+        newNode->rlink = NULL;
+        newNode->llink = NULL;
+        L->head = newNode;
+    } else if (pre == NULL) {
+        insertFirst(L, x);
+    } else {
+        newNode->rlink = pre->rlink;
+        pre->rlink = newNode;
+        newNode->llink = pre;
+        if (newNode->rlink != NULL) {
+            newNode->rlink->llink = newNode;
+        }
+    }
+    L->length++;
 }
 
 void insertFirst(linkedList* L, element x) {
@@ -44,12 +58,41 @@ void insertLast(linkedList* L, element x) {
     listNode *newNode, *temp;
     newNode = (listNode*)malloc(sizeof(listNode));
     newNode->data = x;
-
     // Fill your code
+    newNode->rlink = NULL;
+    if (L->head) {
+        newNode->llink = NULL;
+        L->head = newNode;
+    } else {
+        temp = L->head;
+        while (temp->rlink != NULL) {
+            temp = temp->rlink;
+        }
+        newNode->llink = temp;
+        temp->rlink = newNode;
+    }
+    L->length++;
 }
 
 int delete (linkedList* L, listNode* p) {
     // Fill your code
+    if (L->head == NULL) {
+        return FALSE;
+    }
+    if (p == NULL) {
+        return FALSE;
+    }
+    if (p->llink == NULL) {
+        L->head = p->rlink;
+    } else {
+        p->llink->rlink = p->rlink;
+    }
+    if (p->rlink != NULL) {
+        p->rlink->llink = p->llink;
+    }
+    free(p);
+    L->length--;
+    return TRUE;
 }
 
 listNode* search(linkedList* L, element x) {
