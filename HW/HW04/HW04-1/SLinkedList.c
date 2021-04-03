@@ -45,9 +45,9 @@ void insertFirst(linkedList* L, element x) {
 void insertLast(linkedList* L, element x) {
     listNode *newNode, *temp;
     newNode = (listNode*)malloc(sizeof(listNode));
-    // Fill your code
     newNode->data = x;
     newNode->link = NULL;  // 가장 마지막이기 때문
+
     if (L->head == NULL) {
         L->head = newNode;
     } else {
@@ -89,6 +89,7 @@ int delete (linkedList* L, listNode* p) {
 
 listNode* search(linkedList* L, element x) {
     listNode* temp = L->head;
+
     while (temp != NULL) {
         if (temp->data == x) {
             return temp;

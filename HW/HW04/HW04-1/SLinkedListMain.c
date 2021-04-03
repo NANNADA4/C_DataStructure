@@ -36,7 +36,7 @@ int main() {
     printf("\n(5)리스트에서 80 노드 삭제하기\n");
     p = search(L, 80);
     if (p == NULL) {
-        printf("삭제할 노드가 없습니다");
+        printf("삭제할 노드가 없습니다\n");
     } else {
         printf("노드 삭제 성공!\n");
     }
