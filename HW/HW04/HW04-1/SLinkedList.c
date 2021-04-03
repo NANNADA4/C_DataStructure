@@ -31,15 +31,6 @@ void insert(linkedList* L, listNode* pre, element x) {
         pre->link = newNode;
     }
     L->length++;
-    // Fill your code (새 노드에 데이터 저장)
-
-    // Fill your code (공백 리스트인 경우)
-
-    // Fill your code (첫 번째 노드로 삽입되는 경우)
-
-    // Fill your code (중간 노드로 삽입되는 경우)
-
-    // Fill your code (데이터 개수 증가)
 }
 
 void insertFirst(linkedList* L, element x) {
@@ -72,16 +63,27 @@ void insertLast(linkedList* L, element x) {
 int delete (linkedList* L, listNode* p) {
     listNode* pre;
 
-    // Fill your code (공백 리스트인 경우)
-
-    // Fill your code (삭제할 노드가 없는 경우)
-
-    // Fill your code (첫 번째 노드가 삭제할 노드인 경우)
-
-    // Fill your code (그 이외의 경우)
-
-    // Fill your code (데이터 개수 감소)
-
+    if (L->head == NULL) {
+        return FALSE;
+    }
+    if (p == NULL) {
+        return FALSE;
+    }
+    if (L->head == p) {
+        L->head = p->link;
+        free(p);
+    } else {
+        pre = L->head;
+        while (pre->link != p) {
+            pre = pre->link;
+            if (pre == NULL) {
+                return FALSE;
+            }
+        }
+        pre->link = p->link;
+        free(p);
+    }
+    L->length--;
     return TRUE;
 }
 
@@ -93,9 +95,7 @@ listNode* search(linkedList* L, element x) {
         } else {
             temp = temp->link;
         }
-        return temp;
     }
-
     return temp;
 }
 
