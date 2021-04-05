@@ -124,4 +124,17 @@ void clear(linkedList* L) {
 
 void reverse(linkedList* L) {
     // Fill your code
+    listNode *p, *q, *r;
+    p = L->head;
+    q = NULL;
+    r = NULL;
+
+    while (p != NULL) {
+        r = q;
+        q = p;
+        p = p->link;
+        q->link = r;
+    }
+    p = NULL;
+    L->head = q;
 }

@@ -19,13 +19,23 @@ int main() {
     printf("리스트에 저장된 데이터 개수: %d\n", L->length);
 
     printf("\n(3)목 노드 뒤에 일 노드 삽입하기\n");
-    // Fill your code
+    p = search(L, "목");
+    insert(L, p, "일");
+    displayList(L);
+    printf("리스트에 저장된 데이터 개수: %d\n", L->length);
 
     printf("\n(4)리스트에서 수 노드 탐색하기\n");
-    // Fill your code
+    p = search(L, "수");
+    if (p == NULL) {
+        printf("찾는 데이터가 없습니다. \n");
+    } else {
+        printf("%d 노드를 찾았습니다 \n", p->data);
+    }
 
     printf("\n(5)리스트 순서를 역순으로 바꾸기\n");
-    // Fill your code
+    reverse(L);
+    displayList(L);
+    printf("리스트에 저장된 데이터 개수: %d\n", L->length);
 
     clear(L);
 
