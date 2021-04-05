@@ -7,10 +7,16 @@ int main() {
     listNode* p;
 
     printf("(1)공백리스트 생성하기\n");
-    // Fill your code
+    L = initList();
+    displayList(L);
+    printf("리스트에 저장된 데이터 개수: %d\n", L->length);
 
     printf("\n(2)리스트에 월, 화, 목 노드를 순서대로 삽입하기\n");
-    // Fill your code
+    insertLast(L, "월");
+    insertLast(L, "화");
+    insertLast(L, "목");
+    displayList(L);
+    printf("리스트에 저장된 데이터 개수: %d\n", L->length);
 
     printf("\n(3)목 노드 뒤에 일 노드 삽입하기\n");
     // Fill your code

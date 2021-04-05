@@ -12,56 +12,91 @@ linkedList* initList() {
 }
 
 int getLength(linkedList* L) {  // SLinkedList.c와 동일
-                                // Fill your code
+    return L->length;           // Fill your code
 }
 
 void insert(linkedList* L, listNode* pre, element x) {  // SLinkedList.c와 동일
     listNode* newNode;
     newNode = (listNode*)malloc(sizeof(listNode));
-    // Fill your code (새 노드에 데이터 저장)
+    newNode->data = x;
 
-    // Fill your code (공백 리스트인 경우)
-
-    // Fill your code (첫 번째 노드로 삽입되는 경우)
-
-    // Fill your code (중간 노드로 삽입되는 경우)
-
-    // Fill your code (데이터 개수 증가)
+    if (L->head == NULL) {
+        newNode->link = NULL;
+        L->head = newNode;
+    } else if (pre == NULL) {
+        newNode->link = L->head;
+        L->head = newNode;
+    } else {
+        newNode->link = pre->link;
+        pre->link = newNode;
+    }
+    L->length++;
 }
 
 void insertFirst(linkedList* L, element x) {  // SLinkedList.c와 동일
     listNode* newNode;
     newNode = (listNode*)malloc(sizeof(listNode));
-    // Fill your code
+    newNode->data = x;
+    newNode->link = L->head;
+    L->head = newNode;
+    L->length++;
 }
 
 void insertLast(linkedList* L, element x) {  // SLinkedList.c와 동일
     listNode *newNode, *temp;
     newNode = (listNode*)malloc(sizeof(listNode));
-    // Fill your code
+    newNode->data = x;
+    newNode->link = NULL;  // 가장 마지막이기 때문
+
+    if (L->head == NULL) {
+        L->head = newNode;
+    } else {
+        temp = L->head;
+        while (temp->link != NULL) {
+            temp = temp->link;
+        }
+        temp->link = newNode;
+    }
+    L->length++;
 }
 
 int delete (linkedList* L, listNode* p) {  // SLinkedList.c와 동일
     listNode* pre;
 
-    // Fill your code (공백 리스트인 경우)
-
-    // Fill your code (삭제할 노드가 없는 경우)
-
-    // Fill your code (첫 번째 노드가 삭제할 노드인 경우)
-
-    // Fill your code (그 이외의 경우)
-
-    // Fill your code (데이터 개수 감소)
-
+    if (L->head == NULL) {
+        return FALSE;
+    }
+    if (p == NULL) {
+        return FALSE;
+    }
+    if (L->head == p) {
+        L->head = p->link;
+        free(p);
+    } else {
+        pre = L->head;
+        while (pre->link != p) {
+            pre = pre->link;
+            if (pre == NULL) {
+                return FALSE;
+            }
+        }
+        pre->link = p->link;
+        free(p);
+    }
+    L->length--;
     return TRUE;
 }
 
 listNode* search(linkedList* L, element x) {  // SLinkedList.c와 동일
     listNode* temp = L->head;
 
-    // Fill your code
-
+    while (temp != NULL) {
+        if (temp->data == x) {
+            return temp;
+        } else {
+            temp = temp->link;
+        }
+    }
     return temp;
 }
 

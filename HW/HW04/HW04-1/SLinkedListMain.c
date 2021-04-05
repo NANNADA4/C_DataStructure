@@ -12,7 +12,6 @@ int main() {
     printf("리스트에 저장된 데이터 개수 : %d\n", L->length);
 
     printf("\n(2)리스트에 10, 50, 80 노드를 순서대로 삽입하기\n");
-    // Fill your code
     insertLast(L, 10);
     insertLast(L, 50);
     insertLast(L, 80);
