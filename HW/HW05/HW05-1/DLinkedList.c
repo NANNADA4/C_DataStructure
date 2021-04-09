@@ -60,7 +60,7 @@ void insertLast(linkedList* L, element x) {
     newNode->data = x;
     // Fill your code
     newNode->rlink = NULL;
-    if (L->head) {
+    if (L->head == NULL) {
         newNode->llink = NULL;
         L->head = newNode;
     } else {

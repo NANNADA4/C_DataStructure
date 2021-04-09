@@ -1,68 +1,68 @@
 #include <stdio.h>
+
 #include "DLinkedList.h"
 
-int main(){
-	linkedList* L;
-	listNode* p;
-	
-	printf("(1)ÀÌÁß ¿¬°á ¸®½ºÆ® »ı¼ºÇÏ±â\n");
-	L = initList();
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(2)¸®½ºÆ®¿¡ 10 ³ëµå¸¦ Ã¹ ¹øÂ° ³ëµå·Î »ğÀÔÇÏ±â\n");
-	insertFirst(L, 10);
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(3)¸®½ºÆ®ÀÇ 50 ³ëµå¸¦ ¸¶Áö¸· ³ëµå·Î »ğÀÔÇÏ±â\n");
-	insertLast(L, 50);
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(4)¸®½ºÆ®¿¡ 5 ³ëµå¸¦ Ã¹ ¹øÂ° ³ëµå·Î »ğÀÔÇÏ±â\n");
-	insertFirst(L, 5);
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-		
-	printf("\n(5)¸®½ºÆ®ÀÇ 50 ³ëµå µÚ¿¡ 80 ³ëµå¸¦ »ğÀÔÇÏ±â\n");
-	p = search(L, 50);
-	insert(L, p, 80);
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(6)80 ³ëµå¸¦ °Ë»öÇÏ°í »èÁ¦ÇÏ±â\n");
-	p = search(L, 80);
-	if(p == NULL)
-		printf("Ã£´Â µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
-	else
-		printf("%d ³ëµå¸¦ Ã£¾Ò½À´Ï´Ù\n", p->data);
-	if(delete(L, p))
-		printf("³ëµå »èÁ¦ ¼º°ø!\n");
-	else
-		printf("³ëµå »èÁ¦ ½ÇÆĞ!\n");
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(7)50 ³ëµå µÚ¿¡ 70 ³ëµå »ğÀÔÇÏ±â\n");
-	p = search(L, 50);
-	insert(L, p, 70);
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	printf("\n(8)10 ³ëµå¸¦ °Ë»öÇÏ°í »èÁ¦ÇÏ±â\n");
-	p = search(L, 10);
-	if(p == NULL)
-		printf("Ã£´Â µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
-	else
-		printf("%d ³ëµå¸¦ Ã£¾Ò½À´Ï´Ù\n", p->data);
-	if(delete(L, p))
-		printf("³ëµå »èÁ¦ ¼º°ø!\n");
-	else
-		printf("³ëµå »èÁ¦ ½ÇÆĞ!\n");
-	displayList(L);
-	printf("¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ °³¼ö: %d\n", getLength(L));
-	
-	return 0;
-}
+int main() {
+    linkedList* L;
+    listNode* p;
 
+    printf("(1)ì´ì¤‘ ì—°ê²° ë¦¬ìŠ¤íŠ¸ ìƒì„±í•˜ê¸°\n");
+    L = initList();
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(2)ë¦¬ìŠ¤íŠ¸ì— 10 ë…¸ë“œë¥¼ ì²« ë²ˆì§¸ ë…¸ë“œë¡œ ì‚½ì…í•˜ê¸°\n");
+    insertFirst(L, 10);
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(3)ë¦¬ìŠ¤íŠ¸ì˜ 50 ë…¸ë“œë¥¼ ë§ˆì§€ë§‰ ë…¸ë“œë¡œ ì‚½ì…í•˜ê¸°\n");
+    insertLast(L, 50);
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(4)ë¦¬ìŠ¤íŠ¸ì— 5 ë…¸ë“œë¥¼ ì²« ë²ˆì§¸ ë…¸ë“œë¡œ ì‚½ì…í•˜ê¸°\n");
+    insertFirst(L, 5);
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(5)ë¦¬ìŠ¤íŠ¸ì˜ 50 ë…¸ë“œ ë’¤ì— 80 ë…¸ë“œë¥¼ ì‚½ì…í•˜ê¸°\n");
+    p = search(L, 50);
+    insert(L, p, 80);
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(6)80 ë…¸ë“œë¥¼ ê²€ìƒ‰í•˜ê³  ì‚­ì œí•˜ê¸°\n");
+    p = search(L, 80);
+    if (p == NULL)
+        printf("ì°¾ëŠ” ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+    else
+        printf("%d ë…¸ë“œë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤\n", p->data);
+    if (delete (L, p))
+        printf("ë…¸ë“œ ì‚­ì œ ì„±ê³µ!\n");
+    else
+        printf("ë…¸ë“œ ì‚­ì œ ì‹¤íŒ¨!\n");
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(7)50 ë…¸ë“œ ë’¤ì— 70 ë…¸ë“œ ì‚½ì…í•˜ê¸°\n");
+    p = search(L, 50);
+    insert(L, p, 70);
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    printf("\n(8)10 ë…¸ë“œë¥¼ ê²€ìƒ‰í•˜ê³  ì‚­ì œí•˜ê¸°\n");
+    p = search(L, 10);
+    if (p == NULL)
+        printf("ì°¾ëŠ” ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+    else
+        printf("%d ë…¸ë“œë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤\n", p->data);
+    if (delete (L, p))
+        printf("ë…¸ë“œ ì‚­ì œ ì„±ê³µ!\n");
+    else
+        printf("ë…¸ë“œ ì‚­ì œ ì‹¤íŒ¨!\n");
+    displayList(L);
+    printf("ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ê°œìˆ˜: %d\n", getLength(L));
+
+    return 0;
+}

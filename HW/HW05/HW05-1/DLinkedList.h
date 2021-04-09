@@ -6,27 +6,26 @@
 
 typedef int element;
 
-// ÀÌÁß¿¬°á¸®½ºÆ®ÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// ì´ì¤‘ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct ListNode {
-	element data;
-	struct ListNode *llink, *rlink;
-}listNode;
+    element data;
+    struct ListNode *llink, *rlink;
+} listNode;
 
-// ¸®½ºÆ® ½ÃÀÛÀ» ³ªÅ¸³»´Â head ³ëµå¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// ë¦¬ìŠ¤íŠ¸ ì‹œì‘ì„ ë‚˜íƒ€ë‚´ëŠ” head ë…¸ë“œë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct LinkedList {
-	listNode* head;
-	int length;
-}linkedList;
+    listNode* head;
+    int length;
+} linkedList;
 
-linkedList* initList();									// °ø¹é¸®½ºÆ® »ı¼º 
-void insert(linkedList* L, listNode* pre, element x);	// Áß°£ ³ëµå·Î »ğÀÔ 
-void insertFirst(linkedList* L, element x);				// Ã¹ ¹øÂ° ³ëµå·Î »ğÀÔ 
-void insertLast(linkedList* L, element x);				// ¸¶Áö¸· ³ëµå·Î »ğÀÔ 
-int delete(linkedList* L, listNode* p);					// ³ëµå »èÁ¦ 
-listNode* search(linkedList* L, element x);				// °Ë»ö
-int getLength(linkedList* L);							// ¸®½ºÆ®¿¡ ÀúÀåµÇ¾î ÀÖ´Â µ¥ÀÌÅÍÀÇ ¼ö ¹İÈ¯ 
-void displayList(linkedList* L);						// ¸®½ºÆ®ÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
-void clear(linkedList* L);								// ¸®½ºÆ®ÀÇ ÀüÃ¼ ¸Ş¸ğ¸® ÇØÁ¦ 
+linkedList* initList();                                // ê³µë°±ë¦¬ìŠ¤íŠ¸ ìƒì„±
+void insert(linkedList* L, listNode* pre, element x);  // ì¤‘ê°„ ë…¸ë“œë¡œ ì‚½ì…
+void insertFirst(linkedList* L, element x);            // ì²« ë²ˆì§¸ ë…¸ë“œë¡œ ì‚½ì…
+void insertLast(linkedList* L, element x);             // ë§ˆì§€ë§‰ ë…¸ë“œë¡œ ì‚½ì…
+int delete (linkedList* L, listNode* p);               // ë…¸ë“œ ì‚­ì œ
+listNode* search(linkedList* L, element x);            // ê²€ìƒ‰
+int getLength(linkedList* L);                          // ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ë˜ì–´ ìˆëŠ” ë°ì´í„°ì˜ ìˆ˜ ë°˜í™˜
+void displayList(linkedList* L);                       // ë¦¬ìŠ¤íŠ¸ì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void clear(linkedList* L);                             // ë¦¬ìŠ¤íŠ¸ì˜ ì „ì²´ ë©”ëª¨ë¦¬ í•´ì œ
 
 #endif
-

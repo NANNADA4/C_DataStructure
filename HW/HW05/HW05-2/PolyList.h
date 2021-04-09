@@ -2,19 +2,19 @@
 #define __POLY_LINKED_LIST_H__
 
 typedef struct PolyNode {
-	float coef;
-	int exp;
-	struct PolyNode* link;
-}Node;
+    float coef;
+    int exp;
+    struct PolyNode* link;
+} Node;
 
 typedef struct PolyList {
-	Node* head;
-	Node* last;
-}polyList;
+    Node* head;
+    Node* last;
+} polyList;
 
-polyList* initList();		// °ø¹é¸®½ºÆ® »ı¼º 
-void appendTerm(polyList* PL, float coef, int exp);		// ´ÙÇ×½Ä ¸®½ºÆ® ¸¶Áö¸· ³ëµå·Î Ç× Ãß°¡ 
-polyList* addPoly(polyList* A, polyList* B);			// µÎ ´ÙÇ×½ÄÀÇ µ¡¼À 
-void displayPoly(polyList* PL);							// ´ÙÇ×½Ä ¸®½ºÆ®ÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
+polyList* initList();                                // ê³µë°±ë¦¬ìŠ¤íŠ¸ ìƒì„±
+void appendTerm(polyList* PL, float coef, int exp);  // ë‹¤í•­ì‹ ë¦¬ìŠ¤íŠ¸ ë§ˆì§€ë§‰ ë…¸ë“œë¡œ í•­ ì¶”ê°€
+polyList* addPoly(polyList* A, polyList* B);         // ë‘ ë‹¤í•­ì‹ì˜ ë§ì…ˆ
+void displayPoly(polyList* PL);                      // ë‹¤í•­ì‹ ë¦¬ìŠ¤íŠ¸ì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
 
 #endif
