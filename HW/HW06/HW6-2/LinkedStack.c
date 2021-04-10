@@ -1,76 +1,58 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "LinkedStack.h"
 
-// °ø¹é½ºÅÃ »ý¼º
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°±ìŠ¤íƒ ìƒì„±
 Stack* create() {
-	Stack* S = (Stack*)malloc(sizeof(Stack));
-	S->top = NULL;
-	return S;
+    Stack* S = (Stack*)malloc(sizeof(Stack));
+    S->top = NULL;
+    return S;
 }
 
-// ½ºÅÃÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê					
+// ìŠ¤íƒì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isFull(Stack* S) {
-	// Fill your code
-
+    // Fill your code
 }
 
-// ½ºÅÃÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isEmpty(Stack* S) {
-	// Fill your code
-
+    // Fill your code
 }
 
-// ½ºÅÃÀÇ top¿¡ ¿ä¼Ò¸¦ Ãß°¡ÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì˜ topì— ìš”ì†Œë¥¼ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
 void push(Stack* S, element x) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò »èÁ¦ ¹× ¹ÝÈ¯ÇÏ´Â ¿¬»ê	
+// ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ìž¥ëœ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element pop(Stack* S) {
-	// Fill your code
-
-
-
-
-
-
+    // Fill your code
 }
 
-// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò¸¦ ¹ÝÈ¯ÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ìž¥ëœ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element peek(Stack* S) {
-	// Fill your code
-
-
-
-
-
+    // Fill your code
 }
 
-// ½ºÅÃÀÇ ¸ðµç ¿ä¼Ò Ãâ·Â 			
+// ìŠ¤íƒì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
 void displayStack(Stack* S) {
-	stackNode* p = S->top;
-	printf("STACK [ ");
-	while(p) {
-		printf("%d ", p->data);
-		p = p->link;
-	}
-	printf(" ]\n");
+    stackNode* p = S->top;
+    printf("STACK [ ");
+    while (p) {
+        printf("%d ", p->data);
+        p = p->link;
+    }
+    printf(" ]\n");
 }
 
-// ½ºÅÃ ºñ¿ì±â
+// ìŠ¤íƒ ë¹„ìš°ê¸°
 void clear(Stack* S) {
-	stackNode* p;
-	while(S->top) {
-		p = S->top;
-		S->top = S->top->link;
-		free(p);
-		p = NULL;
-	}
-}				
-
-
+    stackNode* p;
+    while (S->top) {
+        p = S->top;
+        S->top = S->top->link;
+        free(p);
+        p = NULL;
+    }
+}

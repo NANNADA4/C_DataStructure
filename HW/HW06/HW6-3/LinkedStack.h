@@ -7,27 +7,25 @@
 
 typedef int element;
 
-// StackÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// Stackì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct StackNode {
-	element data;
-	struct StackNode* link;
-}stackNode;
+    element data;
+    struct StackNode* link;
+} stackNode;
 
-// StackÀÇ ¸¶Áö¸· ¿ä¼Ò(°¡Àå ÃÖ±Ù¿¡ »ğÀÔµÈ ³ëµå)¸¦ ³ªÅ¸³»´Â topÀ» ±¸Á¶Ã¼·Î Á¤ÀÇ 
+// Stackì˜ ë§ˆì§€ë§‰ ìš”ì†Œ(ê°€ì¥ ìµœê·¼ì— ì‚½ì…ëœ ë…¸ë“œ)ë¥¼ ë‚˜íƒ€ë‚´ëŠ” topì„ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct LinkedStack {
-	stackNode* top;
-}Stack;
+    stackNode* top;
+} Stack;
 
-Stack* create();					// °ø¹é½ºÅÃ »ı¼º
-int getLength(Stack* S);			// ½ºÅÃ¿¡ ÀúÀåµÈ ¿ä¼Ò °³¼ö¸¦ ¹İÈ¯ÇÏ´Â ¿¬»ê 
-int isFull(Stack* S);				// ½ºÅÃÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-int isEmpty(Stack* S);				// ½ºÅÃÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-void push(Stack* S, element x);		// ½ºÅÃÀÇ top¿¡ ¿ä¼Ò¸¦ Ãß°¡ÇÏ´Â ¿¬»ê
-element pop(Stack* S);				// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò »èÁ¦ ¹× ¹İÈ¯ÇÏ´Â ¿¬»ê
-element peek(Stack* S);				// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò¸¦ ¹İÈ¯ÇÏ´Â ¿¬»ê
-void displayStack(Stack* S);		// ½ºÅÃÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
-void clear(Stack* S);				// ½ºÅÃ ºñ¿ì±â 
+Stack* create();                 // ê³µë°±ìŠ¤íƒ ìƒì„±
+int getLength(Stack* S);         // ìŠ¤íƒì— ì €ì¥ëœ ìš”ì†Œ ê°œìˆ˜ë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+int isFull(Stack* S);            // ìŠ¤íƒì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+int isEmpty(Stack* S);           // ìŠ¤íƒì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+void push(Stack* S, element x);  // ìŠ¤íƒì˜ topì— ìš”ì†Œë¥¼ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
+element pop(Stack* S);           // ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ì¥ëœ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+element peek(Stack* S);          // ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ì¥ëœ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+void displayStack(Stack* S);     // ìŠ¤íƒì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void clear(Stack* S);            // ìŠ¤íƒ ë¹„ìš°ê¸°
 
 #endif
-
-

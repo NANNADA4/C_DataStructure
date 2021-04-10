@@ -1,33 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "ArrayStack.h"		// ¹è¿­·Î ±¸ÇöÇÑ ½ºÅÃ ÀÌ¿ë½Ã ÁÖ¼® ÇØÁ¦
-//#include "LinkedStack.h"		// ¿¬°á¸®½ºÆ®·Î ±¸ÇöÇÑ ½ºÅÃ ÀÌ¿ë½Ã ÁÖ¼® ÇØÁ¦ 
+
+#include "ArrayStack.h"  // ë°°ì—´ë¡œ êµ¬í˜„í•œ ìŠ¤íƒ ì´ìš©ì‹œ ì£¼ì„ í•´ì œ
+// #include "LinkedStack.h"  // ì—°ê²°ë¦¬ìŠ¤íŠ¸ë¡œ êµ¬í˜„í•œ ìŠ¤íƒ ì´ìš©ì‹œ ì£¼ì„ í•´ì œ
 
 int testPair(char* exp) {
-	Stack* S = (Stack*)malloc(sizeof(Stack));
-	S = create();
-	char symbol, lparen;
-	int i, length = strlen(exp);
+    Stack* S = (Stack*)malloc(sizeof(Stack));
+    S = create();
+    char symbol, lparen;
+    int i, length = strlen(exp);
 
-	// Fill your code
-
-
-
-
-
+    // Fill your code
 }
 
 int main() {
-	int i;
-	char* x[4] = {"(A - B) * C) + D", "(A - B) * C + ( D", "A [ B ( C ] )", "{A / (B - C)}"};
-	
-	for(i=0; i<4; i++) {
-		printf("%s ", x[i]);
-		if(testPair(x[i]))
-			printf("-> ¼ö½ÄÀÇ °ıÈ£°¡ ¿Ã¹Ù¸£°Ô »ç¿ëµÇ¾ú½À´Ï´Ù!\n");
-		else
-			printf("-> ¼ö½ÄÀÇ °ıÈ£°¡ Æ²·È½À´Ï´Ù!\n");
-	}
-	
-	return 0;
+    int i;
+    char* x[4] = {"(A - B) * C) + D", "(A - B) * C + ( D", "A [ B ( C ] )", "{A / (B - C)}"};
+
+    for (i = 0; i < 4; i++) {
+        printf("%s ", x[i]);
+        if (testPair(x[i]))
+            printf("-> ìˆ˜ì‹ì˜ ê´„í˜¸ê°€ ì˜¬ë°”ë¥´ê²Œ ì‚¬ìš©ë˜ì—ˆìŠµë‹ˆë‹¤!\n");
+        else
+            printf("-> ìˆ˜ì‹ì˜ ê´„í˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤!\n");
+    }
+
+    return 0;
 }

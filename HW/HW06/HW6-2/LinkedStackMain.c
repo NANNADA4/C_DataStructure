@@ -1,40 +1,27 @@
 #include <stdio.h>
+
 #include "LinkedStack.h"
 
 int main() {
-	Stack* S;
-	element item;
-	int i;
-	
-	printf("(1) °ø¹é ½ºÅÃ »ı¼ºÇÏ±â\n");
-	S = create();
-	displayStack(S);
-	
-	printf("\n(2) ½ºÅÃ¿¡ 10, 20, 30À» Â÷·Ê·Î »ğÀÔ\n");
-	// Fill your code
+    Stack* S;
+    element item;
+    int i;
 
+    printf("(1) ê³µë°± ìŠ¤íƒ ìƒì„±í•˜ê¸°\n");
+    S = create();
+    displayStack(S);
 
+    printf("\n(2) ìŠ¤íƒì— 10, 20, 30ì„ ì°¨ë¡€ë¡œ ì‚½ì…\n");
+    // Fill your code
 
+    printf("\n(3) í˜„ì¬ topì˜ ìš”ì†Œë¥¼ ì¶œë ¥\n");
+    // Fill your code
 
-	
-	printf("\n(3) ÇöÀç topÀÇ ¿ä¼Ò¸¦ Ãâ·Â\n");
-	// Fill your code
+    // Fill your code
 
+    printf("\n(5) ìŠ¤íƒ ë¹„ìš°ê¸°\n");
+    clear(S);
+    displayStack(S);
 
-
-
-	
-	// Fill your code
-
-
-
-
-
-	
-	printf("\n(5) ½ºÅÃ ºñ¿ì±â\n");
-	clear(S);
-	displayStack(S);
-	
-	return 0;
+    return 0;
 }
-
