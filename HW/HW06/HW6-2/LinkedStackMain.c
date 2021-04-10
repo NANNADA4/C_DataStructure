@@ -12,12 +12,36 @@ int main() {
     displayStack(S);
 
     printf("\n(2) 스택에 10, 20, 30을 차례로 삽입\n");
-    // Fill your code
+    push(S, 10);
+    displayStack(S);
+    push(S, 20);
+    displayStack(S);
+    push(S, 30);
+    displayStack(S);
 
     printf("\n(3) 현재 top의 요소를 출력\n");
-    // Fill your code
+    item = peek(S);
+    printf("top에 저장된 요소 : %d\n", item);
+    displayStack(S);
 
-    // Fill your code
+    printf("\n(4-1) 스택에서 요소 삭제\n");
+    item = pop(S);
+    printf("%d 삭제\n", item);
+    displayStack(S);
+
+    printf("\n(4-2) 스택에서 요소 삭제\n");
+    item = pop(S);
+    printf("%d 삭제\n", item);
+    displayStack(S);
+
+    printf("\n(4-3) 스택에서 요소 삭제\n");
+    item = pop(S);
+    printf("%d 삭제\n", item);
+    displayStack(S);
+
+    printf("\n(4-4) 스택에서 요소 삭제\n");
+    item = pop(S);
+    displayStack(S);
 
     printf("\n(5) 스택 비우기\n");
     clear(S);
