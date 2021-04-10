@@ -39,7 +39,6 @@ element pop(Stack* S) {
     // Fill your code
     if (isEmpty(S)) {
         printf("[ERROR] Stack is Empty \n");
-        return;
     } else {
         element e = S->stack[S->top];
         S->top -= 1;
@@ -52,7 +51,6 @@ element peek(Stack* S) {
     // Fill your code
     if (isEmpty(S)) {
         printf("[ERROR] Stack is Empty \n");
-        return;
     } else {
         return S->stack[S->top];
     }
