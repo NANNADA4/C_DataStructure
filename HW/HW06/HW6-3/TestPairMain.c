@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "ArrayStack.h"  // 배열로 구현한 스택 이용시 주석 해제
 // #include "LinkedStack.h"  // 연결리스트로 구현한 스택 이용시 주석 해제
