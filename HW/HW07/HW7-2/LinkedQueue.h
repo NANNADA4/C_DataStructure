@@ -4,30 +4,27 @@
 #define ERROR 123456789
 #define TRUE 1
 #define FALSE 0
- 
+
 typedef int element;
 
-// QueueÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// Queueì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct QueueNode {
-	element data;
-	struct QueueNode* link;
-}queueNode;
+    element data;
+    struct QueueNode* link;
+} queueNode;
 
-// QueueÀÇ front, rear¸¦ Ç¥ÇöÇÒ ±¸Á¶Ã¼
+// Queueì˜ front, rearë¥¼ í‘œí˜„í•  êµ¬ì¡°ì²´
 typedef struct LinkedQueue {
-	queueNode *front, *rear;
-}Queue; 
+    queueNode *front, *rear;
+} Queue;
 
-Queue* create();					// °ø¹éÅ¥ »ı¼º
-int isFull(Queue* Q);				// Å¥°¡ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-int isEmpty(Queue* Q);				// Å¥°¡ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-void enqueue(Queue* Q, element x);	// Å¥ÀÇ rear¿¡ ¿ä¼Ò¸¦ Ãß°¡ÇÏ´Â ¿¬»ê
-element dequeue(Queue* Q);			// Å¥¿¡¼­ °¡Àå ¸ÕÀú ÀúÀåµÈ ¿ä¼Ò »èÁ¦ ¹× ¹İÈ¯ÇÏ´Â ¿¬»ê
-element peek(Queue* Q);				// Å¥¿¡¼­ °¡Àå ¸ÕÀú ÀúÀåµÈ ¿ä¼Ò¸¦ ¹İÈ¯ÇÏ´Â ¿¬»ê
-void displayQueue(Queue* Q);		// Å¥ÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
-void clear(Queue* Q);				// Å¥ ºñ¿ì±â 
+Queue* create();                    // ê³µë°±í ìƒì„±
+int isFull(Queue* Q);               // íê°€ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+int isEmpty(Queue* Q);              // íê°€ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+void enqueue(Queue* Q, element x);  // íì˜ rearì— ìš”ì†Œë¥¼ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
+element dequeue(Queue* Q);          // íì—ì„œ ê°€ì¥ ë¨¼ì € ì €ì¥ëœ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+element peek(Queue* Q);             // íì—ì„œ ê°€ì¥ ë¨¼ì € ì €ì¥ëœ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+void displayQueue(Queue* Q);        // íì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void clear(Queue* Q);               // í ë¹„ìš°ê¸°
 
 #endif
-
-
-

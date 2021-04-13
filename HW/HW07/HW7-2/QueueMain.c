@@ -1,46 +1,45 @@
 #include <stdio.h>
+
 #include "LinkedQueue.h"
 
 int main() {
-	Queue* Q;
-	element item;
-	int i;
-	
-	printf("(1) °ø¹é Å¥ »ı¼ºÇÏ±â\n");
-	Q = create();
-	displayQueue(Q);
-	
-	printf("\n(2) Å¥¿¡ 10, 20, 30À» Â÷·Ê·Î »ğÀÔ\n");
-	enqueue(Q, 10);
-	displayQueue(Q);
-	enqueue(Q, 20);
-	displayQueue(Q); 
-	enqueue(Q, 30);
-	displayQueue(Q);
-	
-	printf("\n(3) °¡Àå ¸ÕÀú »ğÀÔµÈ ¿ä¼Ò¸¦ Ãâ·Â\n");
-	item = peek(Q);
-	if(item != ERROR)
-		printf("°¡Àå ¸ÕÀú »ğÀÔµÈ ¿ä¼Ò: %d\n", item);
-	displayQueue(Q);
-	
-	printf("\n(4) µ¥ÀÌÅÍ »èÁ¦ 4¹ø ¼öÇà\n");
-	for(i=0; i<4; i++){
-		item = dequeue(Q);
-		if(item != ERROR) {
-			printf("%d »èÁ¦\n", item);
-			displayQueue(Q);
-		}
-		else {
-			displayQueue(Q);
-			break;
-		}
-	}
-	
-	printf("\n(5) Å¥ ºñ¿ì±â\n");
-	clear(Q);
-	displayQueue(Q);
-	
-	return 0;	
-}
+    Queue* Q;
+    element item;
+    int i;
 
+    printf("(1) ê³µë°± í ìƒì„±í•˜ê¸°\n");
+    Q = create();
+    displayQueue(Q);
+
+    printf("\n(2) íì— 10, 20, 30ì„ ì°¨ë¡€ë¡œ ì‚½ì…\n");
+    enqueue(Q, 10);
+    displayQueue(Q);
+    enqueue(Q, 20);
+    displayQueue(Q);
+    enqueue(Q, 30);
+    displayQueue(Q);
+
+    printf("\n(3) ê°€ì¥ ë¨¼ì € ì‚½ì…ëœ ìš”ì†Œë¥¼ ì¶œë ¥\n");
+    item = peek(Q);
+    if (item != ERROR)
+        printf("ê°€ì¥ ë¨¼ì € ì‚½ì…ëœ ìš”ì†Œ: %d\n", item);
+    displayQueue(Q);
+
+    printf("\n(4) ë°ì´í„° ì‚­ì œ 4ë²ˆ ìˆ˜í–‰\n");
+    for (i = 0; i < 4; i++) {
+        item = dequeue(Q);
+        if (item != ERROR) {
+            printf("%d ì‚­ì œ\n", item);
+            displayQueue(Q);
+        } else {
+            displayQueue(Q);
+            break;
+        }
+    }
+
+    printf("\n(5) í ë¹„ìš°ê¸°\n");
+    clear(Q);
+    displayQueue(Q);
+
+    return 0;
+}
