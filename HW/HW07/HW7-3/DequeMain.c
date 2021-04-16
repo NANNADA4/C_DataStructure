@@ -1,39 +1,50 @@
 #include <stdio.h>
+
 #include "Deque.h"
 
 int main() {
-	Deque* DQ;
-	element e;
-	int i;
-	
-	printf("== Deque »ı¼ºÇÏ±â==\n");
-	DQ = create();
-	displayDeque(DQ);
-	
-	printf("\n== front »ğÀÔ 10 ==\n");
-	insertFront(DQ, 10);	displayDeque(DQ);
-	printf("\n== front »ğÀÔ 20 ==\n");
-	insertFront(DQ, 20);	displayDeque(DQ);
-	printf("\n== rear »ğÀÔ 30 ==\n");
-	insertRear(DQ, 30);	displayDeque(DQ);
-	printf("\n== front »èÁ¦==\n");
-	e = deleteFront(DQ);	displayDeque(DQ);
-	if(e != ERROR)	printf("»èÁ¦ µ¥ÀÌÅÍ: %d\n", e);
-	printf("\n== rear »èÁ¦==\n");
-	e = deleteRear(DQ);		displayDeque(DQ);
-	if(e != ERROR)	printf("»èÁ¦ µ¥ÀÌÅÍ: %d\n", e);
-	printf("\n== rear »ğÀÔ 40 ==\n");
-	insertRear(DQ, 40);	displayDeque(DQ);
-	printf("\n== front »ğÀÔ 50 ==\n");
-	insertFront(DQ, 50);	displayDeque(DQ);
-	printf("\n== front °Ë»ö==\n");
-	e = getFront(DQ);		displayDeque(DQ);
-	if(e != ERROR)	printf("front µ¥ÀÌÅÍ: %d\n", e);
-	printf("\n== rear °Ë»ö==\n");
-	e = getRear(DQ);		displayDeque(DQ);
-	if(e != ERROR)	printf("rear µ¥ÀÌÅÍ: %d\n", e);
-	printf("\n== Deque ºñ¿ì±â ==\n");
-	clear(DQ);	displayDeque(DQ);	
-	
-	return 0;
+    Deque* DQ;
+    element e;
+    int i;
+
+    printf("== Deque ìƒì„±í•˜ê¸°==\n");
+    DQ = create();
+    displayDeque(DQ);
+
+    printf("\n== front ì‚½ì… 10 ==\n");
+    insertFront(DQ, 10);
+    displayDeque(DQ);
+    printf("\n== front ì‚½ì… 20 ==\n");
+    insertFront(DQ, 20);
+    displayDeque(DQ);
+    printf("\n== rear ì‚½ì… 30 ==\n");
+    insertRear(DQ, 30);
+    displayDeque(DQ);
+    printf("\n== front ì‚­ì œ==\n");
+    e = deleteFront(DQ);
+    displayDeque(DQ);
+    if (e != ERROR) printf("ì‚­ì œ ë°ì´í„°: %d\n", e);
+    printf("\n== rear ì‚­ì œ==\n");
+    e = deleteRear(DQ);
+    displayDeque(DQ);
+    if (e != ERROR) printf("ì‚­ì œ ë°ì´í„°: %d\n", e);
+    printf("\n== rear ì‚½ì… 40 ==\n");
+    insertRear(DQ, 40);
+    displayDeque(DQ);
+    printf("\n== front ì‚½ì… 50 ==\n");
+    insertFront(DQ, 50);
+    displayDeque(DQ);
+    printf("\n== front ê²€ìƒ‰==\n");
+    e = getFront(DQ);
+    displayDeque(DQ);
+    if (e != ERROR) printf("front ë°ì´í„°: %d\n", e);
+    printf("\n== rear ê²€ìƒ‰==\n");
+    e = getRear(DQ);
+    displayDeque(DQ);
+    if (e != ERROR) printf("rear ë°ì´í„°: %d\n", e);
+    printf("\n== Deque ë¹„ìš°ê¸° ==\n");
+    clear(DQ);
+    displayDeque(DQ);
+
+    return 0;
 }

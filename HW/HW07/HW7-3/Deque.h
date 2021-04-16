@@ -4,35 +4,31 @@
 #define ERROR 123456789
 #define TRUE 1
 #define FALSE 0
- 
+
 typedef int element;
 
-// DequeÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// Dequeì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct DequeNode {
-	element data;
-	struct DequeNode* llink;
-	struct DequeNode* rlink;
-}dequeNode;
+    element data;
+    struct DequeNode* llink;
+    struct DequeNode* rlink;
+} dequeNode;
 
-// QueueÀÇ front, rear¸¦ Ç¥ÇöÇÒ ±¸Á¶Ã¼
+// Queueì˜ front, rearë¥¼ í‘œí˜„í•  êµ¬ì¡°ì²´
 typedef struct LinkedDeque {
-	dequeNode *front, *rear;
-}Deque; 
+    dequeNode *front, *rear;
+} Deque;
 
-Deque* create();						// °ø¹éµ¦ »ı¼º
-int isFull(Deque* DQ);					// µ¦ÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-int isEmpty(Deque* DQ);					// µ¦ÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-void insertFront(Deque* DQ, element x);	// µ¦ÀÇ ¸Ó¸®¿¡ ¿ä¼Ò Ãß°¡ÇÏ´Â ¿¬»ê
-void insertRear(Deque* DQ, element x);	// µ¦ÀÇ ²¿¸®¿¡ ¿ä¼Ò Ãß°¡ÇÏ´Â ¿¬»ê
-element deleteFront(Deque* DQ);			// µ¦ÀÇ ¸Ó¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò »èÁ¦ ¹× ¹İÈ¯ÇÏ´Â ¿¬»ê
-element deleteRear(Deque* DQ);			// µ¦ÀÇ ²¿¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò »èÁ¦ ¹× ¹İÈ¯ÇÏ´Â ¿¬»ê 
-element getFront(Deque* DQ);			// µ¦ÀÇ ¸Ó¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò ¹İÈ¯ÇÏ´Â ¿¬»ê. »èÁ¦ X
-element getRear(Deque* DQ);				// µ¦ÀÇ ²¿¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò ¹İÈ¯ÇÏ´Â ¿¬»ê. »èÁ¦ X
-void displayDeque(Deque* DQ);			// µ¦ÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
-void clear(Deque* DQ);					// µ¦ ºñ¿ì±â 
+Deque* create();                         // ê³µë°±ë± ìƒì„±
+int isFull(Deque* DQ);                   // ë±ì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+int isEmpty(Deque* DQ);                  // ë±ì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+void insertFront(Deque* DQ, element x);  // ë±ì˜ ë¨¸ë¦¬ì— ìš”ì†Œ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
+void insertRear(Deque* DQ, element x);   // ë±ì˜ ê¼¬ë¦¬ì— ìš”ì†Œ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
+element deleteFront(Deque* DQ);          // ë±ì˜ ë¨¸ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+element deleteRear(Deque* DQ);           // ë±ì˜ ê¼¬ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+element getFront(Deque* DQ);             // ë±ì˜ ë¨¸ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ë°˜í™˜í•˜ëŠ” ì—°ì‚°. ì‚­ì œ X
+element getRear(Deque* DQ);              // ë±ì˜ ê¼¬ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ë°˜í™˜í•˜ëŠ” ì—°ì‚°. ì‚­ì œ X
+void displayDeque(Deque* DQ);            // ë±ì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void clear(Deque* DQ);                   // ë± ë¹„ìš°ê¸°
 
 #endif
-
-
-
-

@@ -1,99 +1,74 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Deque.h"
 
-// °ø¹éµ¦ »ý¼º
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°±ë± ìƒì„±
 Deque* create() {
-	Deque* DQ = (Deque*)malloc(sizeof(Deque));
-	DQ->front = NULL;
-	DQ->rear = NULL;
-	return DQ;
+    Deque* DQ = (Deque*)malloc(sizeof(Deque));
+    DQ->front = NULL;
+    DQ->rear = NULL;
+    return DQ;
 }
 
-// µ¦ÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê					
+// ë±ì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isFull(Deque* DQ) {
-	// Fill your code
-
+    // Fill your code
 }
 
-// µ¦ÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê				
+// ë±ì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isEmpty(Deque* DQ) {
-	// Fill your code
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ¸Ó¸®¿¡ ¿ä¼Ò Ãß°¡ÇÏ´Â ¿¬»ê			
+// ë±ì˜ ë¨¸ë¦¬ì— ìš”ì†Œ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
 void insertFront(Deque* DQ, element x) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ²¿¸®¿¡ ¿ä¼Ò Ãß°¡ÇÏ´Â ¿¬»ê
+// ë±ì˜ ê¼¬ë¦¬ì— ìš”ì†Œ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
 void insertRear(Deque* DQ, element x) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ¸Ó¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò »èÁ¦ ¹× ¹ÝÈ¯ÇÏ´Â ¿¬»ê	
+// ë±ì˜ ë¨¸ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element deleteFront(Deque* DQ) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ²¿¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò »èÁ¦ ¹× ¹ÝÈ¯ÇÏ´Â ¿¬»ê 		
+// ë±ì˜ ê¼¬ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element deleteRear(Deque* DQ) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ¸Ó¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò ¹ÝÈ¯ÇÏ´Â ¿¬»ê. »èÁ¦ X		
+// ë±ì˜ ë¨¸ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ë°˜í™˜í•˜ëŠ” ì—°ì‚°. ì‚­ì œ X
 element getFront(Deque* DQ) {
-	// Fill your code
-
-
-
-
+    // Fill your code
 }
 
-// µ¦ÀÇ ²¿¸®¿¡ À§Ä¡ÇÑ ¿ä¼Ò ¹ÝÈ¯ÇÏ´Â ¿¬»ê. »èÁ¦ X		
+// ë±ì˜ ê¼¬ë¦¬ì— ìœ„ì¹˜í•œ ìš”ì†Œ ë°˜í™˜í•˜ëŠ” ì—°ì‚°. ì‚­ì œ X
 element getRear(Deque* DQ) {
-	// Fill your code
-
-
-
-
-}	
-
-// µ¦ÀÇ ¸ðµç ¿ä¼Ò Ãâ·Â		
-void displayDeque(Deque* DQ) {
-	dequeNode* p = DQ->front;
-	printf("Deque [ ");
-	while(p) {
-		printf("%d ", p->data);
-		p = p->rlink;
-	}
-	printf(" ]\n");
+    // Fill your code
 }
 
-// µ¦ ºñ¿ì±â 	
+// ë±ì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void displayDeque(Deque* DQ) {
+    dequeNode* p = DQ->front;
+    printf("Deque [ ");
+    while (p) {
+        printf("%d ", p->data);
+        p = p->rlink;
+    }
+    printf(" ]\n");
+}
+
+// ë± ë¹„ìš°ê¸°
 void clear(Deque* DQ) {
-	dequeNode* p;
-	while(DQ->front) {
-		p = DQ->front;
-		DQ->front = DQ->front->rlink;
-		free(p);
-		p = NULL;
-	}
-}				
+    dequeNode* p;
+    while (DQ->front) {
+        p = DQ->front;
+        DQ->front = DQ->front->rlink;
+        free(p);
+        p = NULL;
+    }
+}

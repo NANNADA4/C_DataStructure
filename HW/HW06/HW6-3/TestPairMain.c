@@ -6,12 +6,38 @@
 // #include "LinkedStack.h"  // 연결리스트로 구현한 스택 이용시 주석 해제
 
 int testPair(char* exp) {
-    Stack* S = (Stack*)malloc(sizeof(Stack));
+    Stack* S;
     S = create();
     char symbol, lparen;
     int i, length = strlen(exp);
 
-    // Fill your code
+    for (i = 0; i < length; i++) {
+        symbol = exp[i];
+        switch (symbol) {
+            case '(':
+            case '{':
+            case '[':
+                push(S, symbol);
+                break;
+
+            case ')':
+            case '}':
+            case ']':
+                if (isEmpty(S)) {
+                    return FALSE;
+                } else {
+                    lparen = pop(S);
+                }
+                if ((lparen == '(') && symbol != ')' || (lparen == '{') && symbol != '}' || (lparen == '[') && symbol != ']') {
+                    return FALSE;
+                }
+                break;
+        }
+    }
+    if (!isEmpty(S)) {
+        return FALSE;
+    }
+    return TRUE;
 }
 
 int main() {
