@@ -100,16 +100,18 @@ element deleteRear(Deque* DQ) {
 element getFront(Deque* DQ) {
     if (isEmpty(DQ)) {
         return ERROR;
-    } else
+    } else {
         return DQ->front->data;
+    }
 }
 
 // 덱의 꼬리에 위치한 요소 반환하는 연산. 삭제 X
 element getRear(Deque* DQ) {
     if (isEmpty(DQ)) {
         return ERROR;
+    } else {
+        return DQ->rear->data;
     }
-    return DQ->rear->data;
 }
 
 // 덱의 모든 요소 출력
