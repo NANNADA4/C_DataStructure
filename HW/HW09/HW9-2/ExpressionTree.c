@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "BinaryTree.h"
+#include "LinkedStack.h"
+
+BinTree* createExpTree(char exp[]) {
+	Stack* S = createStack();
+	BinTree* bNode;
+	int expLen = strlen(exp);
+	int i;
+	
+	// Fill your code
+
+
+
+}
+
+int evalExpTree(BinTree* bt) {
+	int op1, op2;
+	
+	// Fill your code
+
+
+
+	
+
+}
+
+void showNodeData(int x) {
+	if(0<=x && x<=9)			// 피연산자 출력 
+		printf("%d ", x);
+	else						// 연산자 출력 
+		printf("%c ", x);
+}
+
+void showPrefixExp(BinTree* bt) {
+	// Fill your code
+
+}
+
+void showInfixExp(BinTree* bt) {
+	if(bt == NULL)
+		return;
+	
+	if(bt->left != NULL || bt->right != NULL)
+		printf(" ( ");
+	
+	showInfixExp(bt->left);		// 첫 번째 피연산자 출력
+	showNodeData(bt->data);		// 연산자 출력
+	showInfixExp(bt->right);	// 두 번째 피연산자 출력
+	
+	if(bt->left != NULL || bt->right != NULL)
+		printf(" ) "); 
+}
+
+void showPostfixExp(BinTree* bt) {
+	// Fill your code
+
+}
