@@ -8,7 +8,7 @@
 typedef int BTData;
 
 typedef struct BinaryTreeNode {
-    BTData data;
+    BTData key;
     struct BinaryTreeNode* left;
     struct BinaryTreeNode* right;
 } BinTree;

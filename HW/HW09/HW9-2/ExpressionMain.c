@@ -1,23 +1,24 @@
 #include <stdio.h>
+
 #include "ExpressionTree.h"
 
 int main() {
-	char exp[] = "12+7*";
-	BinTree* bt = createExpTree(exp);	
-	
-	printf("ÀüÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
-	showPrefixExp(bt);
-	printf("\n");
-	
-	printf("ÁßÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
-	showInfixExp(bt);
-	printf("\n");
-	
-	printf("ÈÄÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
-	showPostfixExp(bt);
-	printf("\n");
-	
-	printf("¿¬»ê °á°ú: %d \n", evalExpTree(bt));
-	
-	return 0;
+    char exp[] = "12+7*";
+    BinTree* bt = createExpTree(exp);
+
+    printf("ì „ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
+    showPrefixExp(bt);
+    printf("\n");
+
+    printf("ì¤‘ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
+    showInfixExp(bt);
+    printf("\n");
+
+    printf("í›„ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
+    showPostfixExp(bt);
+    printf("\n");
+
+    printf("ì—°ì‚° ê²°ê³¼: %d \n", evalExpTree(bt));
+
+    return 0;
 }

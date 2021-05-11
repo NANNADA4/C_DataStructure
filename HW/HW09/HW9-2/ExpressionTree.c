@@ -1,61 +1,63 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+
 #include "BinaryTree.h"
 #include "LinkedStack.h"
 
 BinTree* createExpTree(char exp[]) {
-	Stack* S = createStack();
-	BinTree* bNode;
-	int expLen = strlen(exp);
-	int i;
-	
-	// Fill your code
+    Stack* S = createStack();
+    BinTree* bNode;
+    int expLen = strlen(exp);
+    int i;
 
-
-
+    for (i = 0; i < expLen; i++) {
+        bNode = createBT();
+        if (isdigit(exp[i])) {
+            setData(bNode, exp[i] - '0');
+        } else {
+            makeRSubtree(bNode, pop(S));
+            makeLSubtree(bNode, pop(S));
+            setData(bNode, exp[i]);
+        }
+        push(S, bNode);
+    }
+    return pop(S);
 }
 
 int evalExpTree(BinTree* bt) {
-	int op1, op2;
-	
-	// Fill your code
+    int op1, op2;
 
-
-
-	
-
+    // Fill your code
 }
 
 void showNodeData(int x) {
-	if(0<=x && x<=9)			// ÇÇ¿¬»êÀÚ Ãâ·Â 
-		printf("%d ", x);
-	else						// ¿¬»êÀÚ Ãâ·Â 
-		printf("%c ", x);
+    if (0 <= x && x <= 9)  // í”¼ì—°ì‚°ìž ì¶œë ¥
+        printf("%d ", x);
+    else  // ì—°ì‚°ìž ì¶œë ¥
+        printf("%c ", x);
 }
 
 void showPrefixExp(BinTree* bt) {
-	// Fill your code
-
+    // Fill your code
 }
 
 void showInfixExp(BinTree* bt) {
-	if(bt == NULL)
-		return;
-	
-	if(bt->left != NULL || bt->right != NULL)
-		printf(" ( ");
-	
-	showInfixExp(bt->left);		// Ã¹ ¹øÂ° ÇÇ¿¬»êÀÚ Ãâ·Â
-	showNodeData(bt->data);		// ¿¬»êÀÚ Ãâ·Â
-	showInfixExp(bt->right);	// µÎ ¹øÂ° ÇÇ¿¬»êÀÚ Ãâ·Â
-	
-	if(bt->left != NULL || bt->right != NULL)
-		printf(" ) "); 
+    if (bt == NULL)
+        return;
+
+    if (bt->left != NULL || bt->right != NULL)
+        printf(" ( ");
+
+    showInfixExp(bt->left);   // ì²« ë²ˆì§¸ í”¼ì—°ì‚°ìž ì¶œë ¥
+    showNodeData(bt->data);   // ì—°ì‚°ìž ì¶œë ¥
+    showInfixExp(bt->right);  // ë‘ ë²ˆì§¸ í”¼ì—°ì‚°ìž ì¶œë ¥
+
+    if (bt->left != NULL || bt->right != NULL)
+        printf(" ) ");
 }
 
 void showPostfixExp(BinTree* bt) {
-	// Fill your code
-
+    // Fill your code
 }

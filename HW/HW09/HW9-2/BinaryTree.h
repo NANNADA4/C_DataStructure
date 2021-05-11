@@ -8,25 +8,25 @@
 typedef int BTData;
 
 typedef struct BinaryTreeNode {
-	BTData data;
-	struct BinaryTreeNode* left;
-	struct BinaryTreeNode* right;
-}BinTree;
+    BTData data;
+    struct BinaryTreeNode* left;
+    struct BinaryTreeNode* right;
+} BinTree;
 
-BinTree* createBT();			// °ø¹é ÀÌÁø Æ®¸® »ı¼º ¿¬»ê
-int isBTEmpty(BinTree* bt);		// ÀÌÁø Æ®¸®°¡ ºñ¾îÀÖ´ÂÁö °Ë»çÇÏ´Â ¿¬»ê
-BinTree* makeBT(BinTree* bt1, BTData x, BinTree* bt2); 	// ¿ŞÂÊ ¼­ºêÆ®¸®°¡ bt1, ¿À¸¥ÂÊ ¼­ºêÆ®¸®°¡ bt2, x°ªÀ» °¡Áö´Â ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â ÀÌÁøÆ®¸® ¹İÈ¯
-void makeLSubtree(BinTree* bt1, BinTree* bt2);		// bt2¸¦ bt1ÀÇ ¿ŞÂÊ ¼­ºêÆ®¸®·Î ¿¬°á
-void makeRSubtree(BinTree* bt1, BinTree* bt2);		// bt2¸¦ bt1ÀÇ ¿À¸¥ÂÊ ¼­ºêÆ®¸®·Î ¿¬°á
-BinTree* getLSubtree(BinTree* bt);		// btÀÇ ¿ŞÂÊ ¼­ºêÆ®¸®¸¦ ¹İÈ¯
-BinTree* getRSubtree(BinTree* bt);		// btÀÇ ¿À¸¥ÂÊ ¼­ºêÆ®¸®¸¦ ¹İÈ¯
-void setData(BinTree* bt, BTData x);	// btÀÇ root ³ëµå¿¡ x °ª ÀúÀå
-BTData getData(BinTree* bt);			// btÀÇ root¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ¹İÈ¯
-void deleteBT(BinTree* bt);	// bt°¡ °¡¸®Å°´Â ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸® ÀüºÎ ¼Ò¸ê
+BinTree* createBT();                                    // ê³µë°± ì´ì§„ íŠ¸ë¦¬ ìƒì„± ì—°ì‚°
+int isBTEmpty(BinTree* bt);                             // ì´ì§„ íŠ¸ë¦¬ê°€ ë¹„ì–´ìˆëŠ”ì§€ ê²€ì‚¬í•˜ëŠ” ì—°ì‚°
+BinTree* makeBT(BinTree* bt1, BTData x, BinTree* bt2);  // ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ê°€ bt1, ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ê°€ bt2, xê°’ì„ ê°€ì§€ëŠ” ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì´ì§„íŠ¸ë¦¬ ë°˜í™˜
+void makeLSubtree(BinTree* bt1, BinTree* bt2);          // bt2ë¥¼ bt1ì˜ ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì—°ê²°
+void makeRSubtree(BinTree* bt1, BinTree* bt2);          // bt2ë¥¼ bt1ì˜ ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì—°ê²°
+BinTree* getLSubtree(BinTree* bt);                      // btì˜ ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ë°˜í™˜
+BinTree* getRSubtree(BinTree* bt);                      // btì˜ ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ë°˜í™˜
+void setData(BinTree* bt, BTData x);                    // btì˜ root ë…¸ë“œì— x ê°’ ì €ì¥
+BTData getData(BinTree* bt);                            // btì˜ rootì— ì €ì¥ëœ ë°ì´í„°ë¥¼ ë°˜í™˜
+void deleteBT(BinTree* bt);                             // btê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ ì „ë¶€ ì†Œë©¸
 
-typedef void visitFuncPtr(BTData x);						// ³ëµå ¹æ¹®½Ã action Á¤ÀÇ 
-void InorderTraverse(BinTree* bt, visitFuncPtr action);		// ÁßÀ§ ¼øÈ¸ 
-void PreorderTraverse(BinTree* bt, visitFuncPtr action);	// ÀüÀ§ ¼øÈ¸ 
-void PostorderTraverse(BinTree* bt, visitFuncPtr action);	// ÈÄÀ§ ¼øÈ¸ 
+typedef void visitFuncPtr(BTData x);                       // ë…¸ë“œ ë°©ë¬¸ì‹œ action ì •ì˜
+void InorderTraverse(BinTree* bt, visitFuncPtr action);    // ì¤‘ìœ„ ìˆœíšŒ
+void PreorderTraverse(BinTree* bt, visitFuncPtr action);   // ì „ìœ„ ìˆœíšŒ
+void PostorderTraverse(BinTree* bt, visitFuncPtr action);  // í›„ìœ„ ìˆœíšŒ
 
 #endif
