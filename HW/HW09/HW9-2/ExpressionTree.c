@@ -29,7 +29,24 @@ BinTree* createExpTree(char exp[]) {
 int evalExpTree(BinTree* bt) {
     int op1, op2;
 
-    // Fill your code
+    if (getLSubtree(bt) == NULL && getRSubtree(bt) == NULL) {
+        return getData(bt);
+    }
+
+    op1 = evalExpTree(getLSubtree(bt));
+    op2 = evalExpTree(getRSubtree(bt));
+
+    switch (getData(bt)) {
+        case '+':
+            return op1 + op2;
+        case '-':
+            return op1 - op2;
+        case '*':
+            return op1 * op2;
+        case '/':
+            return op1 / op2;
+    }
+    return 0;
 }
 
 void showNodeData(int x) {
@@ -40,7 +57,7 @@ void showNodeData(int x) {
 }
 
 void showPrefixExp(BinTree* bt) {
-    // Fill your code
+    PreorderTraverse(bt, showNodeData);
 }
 
 void showInfixExp(BinTree* bt) {
@@ -51,7 +68,7 @@ void showInfixExp(BinTree* bt) {
         printf(" ( ");
 
     showInfixExp(bt->left);   // 첫 번째 피연산자 출력
-    showNodeData(bt->data);   // 연산자 출력
+    showNodeData(bt->key);    // 연산자 출력
     showInfixExp(bt->right);  // 두 번째 피연산자 출력
 
     if (bt->left != NULL || bt->right != NULL)
@@ -59,5 +76,5 @@ void showInfixExp(BinTree* bt) {
 }
 
 void showPostfixExp(BinTree* bt) {
-    // Fill your code
+    PostorderTraverse(bt, showNodeData);
 }
