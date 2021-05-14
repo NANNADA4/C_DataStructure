@@ -1,72 +1,75 @@
 #include <stdio.h>
+
 #include "BinaryTree.h"
 
 void showData(BTData x) {
-	printf("%d ", x);
+    printf("%d ", x);
 }
 
 void menu() {
-	printf("\n*----------------*\n");
-	printf("1: ÀÌÁø Å½»ö Æ®¸® Ãâ·Â(ÁßÀ§¼øÈ¸)\n");
-	printf("2: ÀÌÁø Å½»ö Æ®¸® ³ëµå »ğÀÔ\n");
-	printf("3: ÀÌÁø Å½»ö Æ®¸® ³ëµå »èÁ¦\n");
-	printf("4: ÀÌÁø Å½»ö Æ®¸® ³ëµå °Ë»ö\n");
-	printf("5: Á¾·á\n");
-	printf("*----------------*\n");
-	printf("¸Ş´º ÀÔ·Â>> ");
+    printf("\n*----------------*\n");
+    printf("1: ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ ì¶œë ¥(ì¤‘ìœ„ìˆœíšŒ)\n");
+    printf("2: ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ ë…¸ë“œ ì‚½ì…\n");
+    printf("3: ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ ë…¸ë“œ ì‚­ì œ\n");
+    printf("4: ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ ë…¸ë“œ ê²€ìƒ‰\n");
+    printf("5: ì¢…ë£Œ\n");
+    printf("*----------------*\n");
+    printf("ë©”ë‰´ ì…ë ¥>> ");
 }
 
 int main() {
-	BinTree* bt = createBT();
-	BinTree* p;
-	int choice; 
-	BTData key;
-	
-	setData(bt, 8);	
-	insertBST(bt, 3);
-	insertBST(bt, 10);
-	insertBST(bt, 2);
-	insertBST(bt, 5);
-	insertBST(bt, 14);
-	insertBST(bt, 11);
-	insertBST(bt, 16);
-	
-	while(1) {
-		menu();
-		scanf("%d", &choice);
-		switch(choice) {
-			case 1:
-				printf("ÀÌÁø Å½»ö Æ®¸® Ãâ·Â(ÁßÀ§ ¼øÈ¸)\n");
-				InorderTraverse(bt, showData);
-				break;
-			case 2:
-				printf("»ğÀÔÇÒ ¼ıÀÚ ÀÔ·Â: ");
-				scanf("%d", &key);
-				insertBST(bt, key); 
-				printf("»ğÀÔ ÈÄ Æ®¸® Ãâ·Â(ÁßÀ§¼øÈ¸)\n");
-				InorderTraverse(bt, showData);
-				break;
-			case 3:
-				printf("»èÁ¦ÇÒ ¼ıÀÚ ÀÔ·Â: ");
-				scanf("%d", &key);
-				deleteBST(bt, key);
-				printf("»èÁ¦ ÈÄ Æ®¸® Ãâ·Â(ÁßÀ§¼øÈ¸)\n");
-				InorderTraverse(bt, showData);
-				break;
-			case 4:
-				printf("(4) Å½»öÇÒ ¼ıÀÚ ÀÔ·Â: ");
-				scanf("%d", &key);
-				p = searchBST(bt, key);
-				if(p != NULL) printf("%d¸¦ Å½»ö ¼º°ø", key);
-				else printf("%d Å½»ö ½ÇÆĞ", key);
-				break;
-			case 5:
-				return 0;
-			default:
-				printf("Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù. ¸Ş´º¸¦ ´Ù½Ã ¼±ÅÃÇÏ¼¼¿ä.\n");
-				break;
-		}
-	}	
-	
-	return 0;
+    BinTree* bt = createBT();
+    BinTree* p;
+    int choice;
+    BTData key;
+
+    setData(bt, 8);
+    insertBST(bt, 3);
+    insertBST(bt, 10);
+    insertBST(bt, 2);
+    insertBST(bt, 5);
+    insertBST(bt, 14);
+    insertBST(bt, 11);
+    insertBST(bt, 16);
+
+    while (1) {
+        menu();
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("ì´ì§„ íƒìƒ‰ íŠ¸ë¦¬ ì¶œë ¥(ì¤‘ìœ„ ìˆœíšŒ)\n");
+                InorderTraverse(bt, showData);
+                break;
+            case 2:
+                printf("ì‚½ì…í•  ìˆ«ì ì…ë ¥: ");
+                scanf("%d", &key);
+                insertBST(bt, key);
+                printf("ì‚½ì… í›„ íŠ¸ë¦¬ ì¶œë ¥(ì¤‘ìœ„ìˆœíšŒ)\n");
+                InorderTraverse(bt, showData);
+                break;
+            case 3:
+                printf("ì‚­ì œí•  ìˆ«ì ì…ë ¥: ");
+                scanf("%d", &key);
+                deleteBST(bt, key);
+                printf("ì‚­ì œ í›„ íŠ¸ë¦¬ ì¶œë ¥(ì¤‘ìœ„ìˆœíšŒ)\n");
+                InorderTraverse(bt, showData);
+                break;
+            case 4:
+                printf("(4) íƒìƒ‰í•  ìˆ«ì ì…ë ¥: ");
+                scanf("%d", &key);
+                p = searchBST(bt, key);
+                if (p != NULL)
+                    printf("%dë¥¼ íƒìƒ‰ ì„±ê³µ", key);
+                else
+                    printf("%d íƒìƒ‰ ì‹¤íŒ¨", key);
+                break;
+            case 5:
+                return 0;
+            default:
+                printf("ì˜ëª» ì…ë ¥í–ˆìŠµë‹ˆë‹¤. ë©”ë‰´ë¥¼ ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”.\n");
+                break;
+        }
+    }
+
+    return 0;
 }

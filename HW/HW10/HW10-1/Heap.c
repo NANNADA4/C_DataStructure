@@ -1,71 +1,62 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Heap.h"
 
-// °ø¹é Èü »ı¼º
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°± í™ ìƒì„±
 Heap* createHeap() {
-	Heap* h = (Heap*)malloc(sizeof(Heap));
-	h->numOfData = 0;
-	return h;
-}	
+    Heap* h = (Heap*)malloc(sizeof(Heap));
+    h->numOfData = 0;
+    return h;
+}
 
-// ÈüÀÌ °ø¹éÀÎÁö °Ë»ç			
+// í™ì´ ê³µë°±ì¸ì§€ ê²€ì‚¬
 int isEmpty(Heap* h) {
-	return h->numOfData == 0 ? TRUE : FALSE;
-}	
+    return h->numOfData == 0 ? TRUE : FALSE;
+}
 
-// ÈüÀÇ Àû´çÇÑ À§Ä¡¿¡ ¿ø¼Ò x »ğÀÔ	
+// í™ì˜ ì ë‹¹í•œ ìœ„ì¹˜ì— ì›ì†Œ x ì‚½ì…
 void insertHeap(Heap* h, HData x) {
-	if(h->numOfData == MAX_SIZE) {
-		printf("ERROR: Heap is FULL!!\n");
-		return;
-	}
-	
-	// Fill your code 
+    if (h->numOfData == MAX_SIZE) {
+        printf("ERROR: Heap is FULL!!\n");
+        return;
+    }
 
-
-
-
-
+    // Fill your code
 }
 
-// Èü¿¡¼­ Å° °ªÀÌ °¡Àå Å« ¿ø¼Ò »èÁ¦ÇÏ°í ¹İÈ¯
+// í™ì—ì„œ í‚¤ ê°’ì´ ê°€ì¥ í° ì›ì†Œ ì‚­ì œí•˜ê³  ë°˜í™˜
 HData deleteHeap(Heap* h) {
-	if(isEmpty(h)) {
-		printf("ERROR: Heap is EMPTY!!\n");
-		return 0;
-	}
-	
-	HData item = h->heap[1];
-	HData lastVal = h->heap[h->numOfData];
-	int parentIdx = 1;
-	int childIdx = 2;
-	
-	// Fill your code
+    if (isEmpty(h)) {
+        printf("ERROR: Heap is EMPTY!!\n");
+        return 0;
+    }
 
+    HData item = h->heap[1];
+    HData lastVal = h->heap[h->numOfData];
+    int parentIdx = 1;
+    int childIdx = 2;
 
-
-
-
-}			
-
-// ºÎ¸ğ ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯
-int getParentIdx(int idx) {
-	return idx/2;
-}	
-
-// ¿ŞÂÊ ÀÚ½Ä ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯		
-int getLChildIdx(int idx) {
-	return idx*2;
+    // Fill your code
 }
 
-// ¿À¸¥ÂÊ ÀÚ½Ä ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯			
+// ë¶€ëª¨ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
+int getParentIdx(int idx) {
+    return idx / 2;
+}
+
+// ì™¼ìª½ ìì‹ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
+int getLChildIdx(int idx) {
+    return idx * 2;
+}
+
+// ì˜¤ë¥¸ìª½ ìì‹ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
 int getRChildIdx(int idx) {
-	return idx*2+1;
+    return idx * 2 + 1;
 }
 
 void displayHeap(Heap* h) {
-	int i;
-	for(i=1; i<=h->numOfData; i++)
-		printf("%d %d\n", i, h->heap[i]);
-}	
+    int i;
+    for (i = 1; i <= h->numOfData; i++)
+        printf("%d %d\n", i, h->heap[i]);
+}

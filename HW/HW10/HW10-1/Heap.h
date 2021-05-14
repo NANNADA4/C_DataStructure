@@ -8,18 +8,18 @@
 typedef int HData;
 
 typedef struct {
-	HData heap[MAX_SIZE];
-	int numOfData;
-}Heap;
+    HData heap[MAX_SIZE];
+    int numOfData;
+} Heap;
 
-Heap* createHeap();					// °ø¹é Èü »ı¼º
-int isEmpty(Heap* h);				// ÈüÀÌ °ø¹éÀÎÁö °Ë»ç
-void insertHeap(Heap* h, HData x);	// ÈüÀÇ Àû´çÇÑ À§Ä¡¿¡ ¿ø¼Ò x »ğÀÔ
-HData deleteHeap(Heap* h);			// Èü¿¡¼­ Å° °ªÀÌ °¡Àå Å« ¿ø¼Ò »èÁ¦ÇÏ°í ¹İÈ¯
+Heap* createHeap();                 // ê³µë°± í™ ìƒì„±
+int isEmpty(Heap* h);               // í™ì´ ê³µë°±ì¸ì§€ ê²€ì‚¬
+void insertHeap(Heap* h, HData x);  // í™ì˜ ì ë‹¹í•œ ìœ„ì¹˜ì— ì›ì†Œ x ì‚½ì…
+HData deleteHeap(Heap* h);          // í™ì—ì„œ í‚¤ ê°’ì´ ê°€ì¥ í° ì›ì†Œ ì‚­ì œí•˜ê³  ë°˜í™˜
 
-int getParentIdx(int idx);			// ºÎ¸ğ ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯
-int getLChildIdx(int idx);			// ¿ŞÂÊ ÀÚ½Ä ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯
-int getRChildIdx(int idx);			// ¿À¸¥ÂÊ ÀÚ½Ä ³ëµåÀÇ ÀÎµ¦½º °ª ¹İÈ¯
+int getParentIdx(int idx);  // ë¶€ëª¨ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
+int getLChildIdx(int idx);  // ì™¼ìª½ ìì‹ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
+int getRChildIdx(int idx);  // ì˜¤ë¥¸ìª½ ìì‹ ë…¸ë“œì˜ ì¸ë±ìŠ¤ ê°’ ë°˜í™˜
 void displayHeap(Heap* h);
 
 #endif

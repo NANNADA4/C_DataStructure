@@ -1,152 +1,123 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "BinaryTree.h"
 
-// °ø¹é ÀÌÁø Æ®¸® »ı¼º ¿¬»ê
-BinTree* createBT(){
-	BinTree* bt = (BinTree*)malloc(sizeof(BinTree));
-	bt->key = EMPTY;
-	bt->left = NULL;
-	bt->right = NULL;
-	return bt;
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°± ì´ì§„ íŠ¸ë¦¬ ìƒì„± ì—°ì‚°
+BinTree* createBT() {
+    BinTree* bt = (BinTree*)malloc(sizeof(BinTree));
+    bt->key = EMPTY;
+    bt->left = NULL;
+    bt->right = NULL;
+    return bt;
 }
 
-// ÀÌÁø Æ®¸®°¡ ºñ¾îÀÖ´ÂÁö °Ë»çÇÏ´Â ¿¬»ê
+// ì´ì§„ íŠ¸ë¦¬ê°€ ë¹„ì–´ìˆëŠ”ì§€ ê²€ì‚¬í•˜ëŠ” ì—°ì‚°
 int isBTEmpty(BinTree* bt) {
-	if(bt->left == NULL && bt->right == NULL && bt->key == EMPTY)
-		return TRUE;
-	else
-		return FALSE;
+    if (bt->left == NULL && bt->right == NULL && bt->key == EMPTY)
+        return TRUE;
+    else
+        return FALSE;
 }
 
-// ¿ŞÂÊ ¼­ºêÆ®¸®°¡ bt1, ¿À¸¥ÂÊ ¼­ºêÆ®¸®°¡ bt2, x°ªÀ» °¡Áö´Â ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â ÀÌÁøÆ®¸® ¹İÈ¯
+// ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ê°€ bt1, ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ê°€ bt2, xê°’ì„ ê°€ì§€ëŠ” ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì´ì§„íŠ¸ë¦¬ ë°˜í™˜
 BinTree* makeBT(BinTree* bt1, BTData x, BinTree* bt2) {
-	BinTree* bt = (BinTree*)malloc(sizeof(BinTree));
-	bt->key = x;
-	bt->left = bt1;
-	bt->right = bt2;
-	return bt;
+    BinTree* bt = (BinTree*)malloc(sizeof(BinTree));
+    bt->key = x;
+    bt->left = bt1;
+    bt->right = bt2;
+    return bt;
 }
 
-// bt2¸¦ bt1ÀÇ ¿ŞÂÊ ¼­ºêÆ®¸®·Î ¿¬°á
+// bt2ë¥¼ bt1ì˜ ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì—°ê²°
 void makeLSubtree(BinTree* bt1, BinTree* bt2) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// bt2¸¦ bt1ÀÇ ¿À¸¥ÂÊ ¼­ºêÆ®¸®·Î ¿¬°á
+// bt2ë¥¼ bt1ì˜ ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì—°ê²°
 void makeRSubtree(BinTree* bt1, BinTree* bt2) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// btÀÇ ¿ŞÂÊ ¼­ºêÆ®¸®¸¦ ¹İÈ¯
+// btì˜ ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ë°˜í™˜
 BinTree* getLSubtree(BinTree* bt) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// btÀÇ ¿À¸¥ÂÊ ¼­ºêÆ®¸®¸¦ ¹İÈ¯
+// btì˜ ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ë°˜í™˜
 BinTree* getRSubtree(BinTree* bt) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// btÀÇ root ³ëµå¿¡ x °ª ÀúÀå
+// btì˜ root ë…¸ë“œì— x ê°’ ì €ì¥
 void setData(BinTree* bt, BTData x) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// btÀÇ root¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ¹İÈ¯
+// btì˜ rootì— ì €ì¥ëœ ë°ì´í„°ë¥¼ ë°˜í™˜
 BTData getData(BinTree* bt) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// bt°¡ °¡¸®Å°´Â ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸® ÀüºÎ ¼Ò¸ê
+// btê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ ì „ë¶€ ì†Œë©¸
 void deleteBT(BinTree* bt) {
-	if(bt == NULL)
-		return;
-	
-	deleteBT(bt->left);
-	deleteBT(bt->right);
-	
-	printf("delete tree data: %d \n", bt->key);
-	free(bt);
+    if (bt == NULL)
+        return;
+
+    deleteBT(bt->left);
+    deleteBT(bt->right);
+
+    printf("delete tree data: %d \n", bt->key);
+    free(bt);
 }
 
-// ÁßÀ§ ¼øÈ¸ 
+// ì¤‘ìœ„ ìˆœíšŒ
 void InorderTraverse(BinTree* bt, visitFuncPtr action) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// ÀüÀ§ ¼øÈ¸
+// ì „ìœ„ ìˆœíšŒ
 void PreorderTraverse(BinTree* bt, visitFuncPtr action) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// ÈÄÀ§ ¼øÈ¸
+// í›„ìœ„ ìˆœíšŒ
 void PostorderTraverse(BinTree* bt, visitFuncPtr action) {
-	// Fill your code
-	// HW #7.1
-
+    // Fill your code
+    // HW #7.1
 }
 
-// µ¥ÀÌÅÍ x°¡ ÀúÀåµÈ ³ëµå Å½»ö
+// ë°ì´í„° xê°€ ì €ì¥ëœ ë…¸ë“œ íƒìƒ‰
 BinTree* searchBST(BinTree* bt, BTData x) {
-	BinTree* p = bt;
-	
-	// Fill your code
-	
+    BinTree* p = bt;
 
-
-
+    // Fill your code
 }
 
-// µ¥ÀÌÅÍ x ÀúÀå
+// ë°ì´í„° x ì €ì¥
 void insertBST(BinTree* bt, BTData x) {
-	BinTree* p = bt;
-	BinTree* parent = NULL;	
-	
-	// »ğÀÔÇÒ ³ëµå Å½»ö
-	// Fill your code
-	
+    BinTree* p = bt;
+    BinTree* parent = NULL;
 
+    // ì‚½ì…í•  ë…¸ë“œ íƒìƒ‰
+    // Fill your code
 
+    // ì‚½ì…í•  ë…¸ë“œ ìƒì„±
+    // Fill your code
 
-	// »ğÀÔÇÒ ³ëµå »ı¼º
-	// Fill your code
-	
-
-
-
-	
-	// »ğÀÔ ³ëµå ¿¬°á
-	// Fill your code
-
-
-
-
-
+    // ì‚½ì… ë…¸ë“œ ì—°ê²°
+    // Fill your code
 }
 
-// µ¥ÀÌÅÍ x ³ëµå »èÁ¦	
+// ë°ì´í„° x ë…¸ë“œ ì‚­ì œ
 void deleteBST(BinTree* bt, BTData x) {
-	// Fill your code
-	
-
-
-
-}	
-
+    // Fill your code
+}

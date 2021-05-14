@@ -1,31 +1,32 @@
 #include <stdio.h>
+
 #include "Heap.h"
 
 int main() {
-	Heap* h = createHeap();
-	
-	insertHeap(h, 20);
-	insertHeap(h, 15);
-	insertHeap(h, 19);
-	insertHeap(h, 8);
-	insertHeap(h, 13);
-	insertHeap(h, 10);	
-	displayHeap(h);
-	
-	printf("(1) 23 »ğÀÔ\n");
-	insertHeap(h, 23);
-	displayHeap(h);
-	
-	printf("(2) 10 »ğÀÔ\n");
-	insertHeap(h, 10);
-	displayHeap(h);
-	
-//	printf("%d\n", deleteHeap(h));
-//	displayHeap(h);
-	
-	printf("(3) Heap ¿ä¼Ò Â÷·¹·Î »èÁ¦\n");
-	while(!isEmpty(h))
-		printf("%d \n", deleteHeap(h));
-	
-	return 0;	
+    Heap* h = createHeap();
+
+    insertHeap(h, 20);
+    insertHeap(h, 15);
+    insertHeap(h, 19);
+    insertHeap(h, 8);
+    insertHeap(h, 13);
+    insertHeap(h, 10);
+    displayHeap(h);
+
+    printf("(1) 23 ì‚½ì…\n");
+    insertHeap(h, 23);
+    displayHeap(h);
+
+    printf("(2) 10 ì‚½ì…\n");
+    insertHeap(h, 10);
+    displayHeap(h);
+
+    //	printf("%d\n", deleteHeap(h));
+    //	displayHeap(h);
+
+    printf("(3) Heap ìš”ì†Œ ì°¨ë ˆë¡œ ì‚­ì œ\n");
+    while (!isEmpty(h))
+        printf("%d \n", deleteHeap(h));
+
+    return 0;
 }
