@@ -37,7 +37,21 @@ HData deleteHeap(Heap* h) {
     int parentIdx = 1;
     int childIdx = 2;
 
-    // Fill your code
+    while (childIdx <= h->numOfData) {
+        if (childIdx < h->numOfData && h->heap[childIdx] < h->heap[childIdx + 1]) {
+            childIdx++;
+        }
+        if (lastVal >= h->heap[childIdx]) {
+            break;
+        } else {
+            h->heap[parentIdx] = h->heap[childIdx];
+            parentIdx = childIdx;
+            childIdx = childIdx * 2;
+        }
+    }
+    h->heap[parentIdx] = lastVal;
+    h->numOfData--;
+    return item;
 }
 
 // 부모 노드의 인덱스 값 반환
