@@ -21,8 +21,18 @@ void insertHeap(Heap* h, HData x) {
         printf("ERROR: Heap is FULL!!\n");
         return;
     }
+    int idx = h->numOfData + 1;
 
-    // Fill your code
+    while (idx != 1) {
+        if (x > h->heap[getParentIdx(idx)]) {
+            h->heap[idx] = h->heap[getParentIdx(idx)];
+            idx = getParentIdx(idx);
+        } else {
+            break;
+        }
+    }
+    h->heap[idx] = x;
+    h->numOfData++;
 }
 
 // 힙에서 키 값이 가장 큰 원소 삭제하고 반환
