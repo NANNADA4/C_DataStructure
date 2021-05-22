@@ -140,7 +140,6 @@ BinTree* searchBST(BinTree* bt, BTData x) {
     }
 }
 
-// 데이터 x 저장
 void insertBST(BinTree* bt, BTData x) {
     BinTree* p = bt;
     BinTree* parent = NULL;
