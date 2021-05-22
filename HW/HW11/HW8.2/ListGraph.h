@@ -5,27 +5,26 @@
 #define DIRECT 1
 #define UNDIRECT 0
 
-// ÀÎÁ¢ ¸®½ºÆ®ÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct GraphNode {
-	int vertex;		// Á¤Á¡À» ³ªÅ¸³»´Â µ¥ÀÌÅÍ ÇÊµå 
-	struct GraphNode* link;	// ´ÙÀ½ ÀÎÁ¢ Á¤Á¡À» ¿¬°áÇÏ´Â ¸µÅ© ÇÊµå 
+    int vertex;              // ì •ì ì„ ë‚˜íƒ€ë‚´ëŠ” ë°ì´í„° í•„ë“œ
+    struct GraphNode* link;  // ë‹¤ìŒ ì¸ì ‘ ì •ì ì„ ì—°ê²°í•˜ëŠ” ë§í¬ í•„ë“œ
 } graphNode;
- 
-// ±×·¡ÇÁ¸¦ ÀÎÁ¢ ¸®½ºÆ®·Î Ç¥ÇöÇÏ±â À§ÇÑ ±¸Á¶Ã¼ Á¤ÀÇ
+
+// ê·¸ë˜í”„ë¥¼ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ë¡œ í‘œí˜„í•˜ê¸° ìœ„í•œ êµ¬ì¡°ì²´ ì •ì˜
 typedef struct GraphType {
-	int n;
-	int type;	// UNDIRECT: ¹«¹æÇâ, DIRECT: ¹æÇâ 
-	graphNode* adjList_H[MAX_SIZE];	// ±×·¡ÇÁ Á¤Á¡¿¡ ´ëÇÑ Çìµå Æ÷ÀÎÅÍ 
+    int n;
+    int type;                        // UNDIRECT: ë¬´ë°©í–¥, DIRECT: ë°©í–¥
+    graphNode* adjList_H[MAX_SIZE];  // ê·¸ë˜í”„ ì •ì ì— ëŒ€í•œ í—¤ë“œ í¬ì¸í„°
 } Graph;
 
-Graph* createGraph(int type);	// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
-int isEmpty(Graph* G);	// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç
-void insertVertex(Graph* G, int v);	// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
-void insertEdge(Graph* G, int u, int v);	// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
-void deleteVertex(Graph* G, int v);	// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »èÁ¦ÇÏ°í ¿¬°áµÈ ¸ğµç °£¼± »èÁ¦
-void deleteEdge(Graph* G, int u, int v);  // ±×·¡ÇÁ G¿¡ °£¼± (u, v)¸¦ »èÁ¦
-void destroyGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
-void displayGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ Çà·Ä Á¤º¸ Ãâ·Â 
- 
-#endif
+Graph* createGraph(int type);             // ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
+int isEmpty(Graph* G);                    // ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
+void insertVertex(Graph* G, int v);       // ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
+void insertEdge(Graph* G, int u, int v);  // ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
+void deleteVertex(Graph* G, int v);       // ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚­ì œí•˜ê³  ì—°ê²°ëœ ëª¨ë“  ê°„ì„  ì‚­ì œ
+void deleteEdge(Graph* G, int u, int v);  // ê·¸ë˜í”„ Gì— ê°„ì„  (u, v)ë¥¼ ì‚­ì œ
+void destroyGraph(Graph* G);              // ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
+void displayGraph(Graph* G);              // ê·¸ë˜í”„ Gì˜ ì¸ì ‘ í–‰ë ¬ ì •ë³´ ì¶œë ¥
 
+#endif

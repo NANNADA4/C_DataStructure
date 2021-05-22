@@ -1,99 +1,89 @@
+#include "ListGraph.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "ListGraph.h"
-#include "LinkedStack.h"
+
 #include "LinkedQueue.h"
+#include "LinkedStack.h"
 
-// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
+// ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
 Graph* createGraph(int type) {
-	int i;
-	Graph* G = (Graph*)malloc(sizeof(Graph));	
-	G->n = 0;
-	G->type = type;
-	for(i=0; i<MAX_SIZE; i++) {
-		G->adjList_H[i] = NULL;
-		G->visited[i] = FALSE;
-		G->pred[i] = -1;
-	}
-	return G;
+    int i;
+    Graph* G = (Graph*)malloc(sizeof(Graph));
+    G->n = 0;
+    G->type = type;
+    for (i = 0; i < MAX_SIZE; i++) {
+        G->adjList_H[i] = NULL;
+        G->visited[i] = FALSE;
+        G->pred[i] = -1;
+    }
+    return G;
 }
 
-// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç	
+// ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
 int isEmptyGraph(Graph* G) {
-	return G->n == 0;
+    return G->n == 0;
 }
 
-// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
 void insertVertex(Graph* G, int v) {
-	if((G->n)+1 > MAX_SIZE) {
-		printf("[ERROR] ±×·¡ÇÁ Á¤Á¡ÀÇ °³¼ö ÃÊ°ú\n");
-		return;
-	}
-	G->n++;
+    if ((G->n) + 1 > MAX_SIZE) {
+        printf("[ERROR] ê·¸ë˜í”„ ì •ì ì˜ ê°œìˆ˜ ì´ˆê³¼\n");
+        return;
+    }
+    G->n++;
 }
 
-// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
 void insertEdge(Graph* G, int u, int v) {
-	// Fill your code (HW8.2) 
-	
-
-
+    // Fill your code (HW8.2)
 }
 
-// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
+// ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
 void destroyGraph(Graph* G) {
-	int i;
-	for(i=0; i<G->n; i++) {
-		if(G->adjList_H[i] != NULL)
-			free(G->adjList_H[i]);
-	}
-	free(G);
+    int i;
+    for (i = 0; i < G->n; i++) {
+        if (G->adjList_H[i] != NULL)
+            free(G->adjList_H[i]);
+    }
+    free(G);
 }
 
-// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ ¸®½ºÆ® Á¤º¸ Ãâ·Â
+// ê·¸ë˜í”„ Gì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ ì •ë³´ ì¶œë ¥
 void displayGraph(Graph* G) {
-	int i;
-	graphNode* p;
-	for(i=0; i<G->n; i++) {
-		printf("Á¤Á¡ %dÀÇ ÀÎÁ¢¸®½ºÆ®", i);
-		p = G->adjList_H[i];
-		while(p) {
-			printf(" -> %d ", p->vertex);
-			p = p->link;
-		}			
-		printf("\n");
-	}
+    int i;
+    graphNode* p;
+    for (i = 0; i < G->n; i++) {
+        printf("ì •ì  %dì˜ ì¸ì ‘ë¦¬ìŠ¤íŠ¸", i);
+        p = G->adjList_H[i];
+        while (p) {
+            printf(" -> %d ", p->vertex);
+            p = p->link;
+        }
+        printf("\n");
+    }
 }
 
-// visited[], pred[] ÃÊ±âÈ­ 
+// visited[], pred[] ì´ˆê¸°í™”
 void initSearch(Graph* G) {
-	int i;
-	for(i=0; i<G->n; i++) {
-		G->visited[i] = FALSE;
-		G->pred[i] = -1;
-	}
+    int i;
+    for (i = 0; i < G->n; i++) {
+        G->visited[i] = FALSE;
+        G->pred[i] = -1;
+    }
 }
 
-// ±íÀÌ ¿ì¼± Å½»ö iterative version
+// ê¹Šì´ ìš°ì„  íƒìƒ‰ iterative version
 void dfs_iter(Graph* G, int v) {
-	// Fill your code (HW8.3)
-	
-
-
-}	
-
-// ±íÀÌ ¿ì¼± Å½»ö recursive version
-void dfs_recur(Graph* G, int v)	{
-	// Fill your code (HW8.3)
-	
-
-
+    // Fill your code (HW8.3)
 }
 
-// ³Êºñ ¿ì¼± Å½»ö
+// ê¹Šì´ ìš°ì„  íƒìƒ‰ recursive version
+void dfs_recur(Graph* G, int v) {
+    // Fill your code (HW8.3)
+}
+
+// ë„ˆë¹„ ìš°ì„  íƒìƒ‰
 void bfs(Graph* G, int v) {
-	// Fill your code (HW8.3) 
-	
-
-
-}		
+    // Fill your code (HW8.3)
+}

@@ -7,32 +7,31 @@
 #define TRUE 1
 #define FALSE 0
 
-// ÀÎÁ¢ ¸®½ºÆ®ÀÇ ³ëµå ±¸Á¶¸¦ ±¸Á¶Ã¼·Î Á¤ÀÇ
+// ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ êµ¬ì¡°ë¥¼ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct GraphNode {
-	int vertex;		// Á¤Á¡À» ³ªÅ¸³»´Â µ¥ÀÌÅÍ ÇÊµå 
-	struct GraphNode* link;	// ´ÙÀ½ ÀÎÁ¢ Á¤Á¡À» ¿¬°áÇÏ´Â ¸µÅ© ÇÊµå 
+    int vertex;              // ì •ì ì„ ë‚˜íƒ€ë‚´ëŠ” ë°ì´í„° í•„ë“œ
+    struct GraphNode* link;  // ë‹¤ìŒ ì¸ì ‘ ì •ì ì„ ì—°ê²°í•˜ëŠ” ë§í¬ í•„ë“œ
 } graphNode;
- 
-// ±×·¡ÇÁ¸¦ ÀÎÁ¢ ¸®½ºÆ®·Î Ç¥ÇöÇÏ±â À§ÇÑ ±¸Á¶Ã¼ Á¤ÀÇ
+
+// ê·¸ë˜í”„ë¥¼ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ë¡œ í‘œí˜„í•˜ê¸° ìœ„í•œ êµ¬ì¡°ì²´ ì •ì˜
 typedef struct GraphType {
-	int n;
-	int type;	// UNDIRECT: ¹«¹æÇâ, DIRECT: ¹æÇâ 
-	graphNode* adjList_H[MAX_SIZE];	// ±×·¡ÇÁ Á¤Á¡¿¡ ´ëÇÑ Çìµå Æ÷ÀÎÅÍ 
-	int visited[MAX_SIZE];
-	int pred[MAX_SIZE];
+    int n;
+    int type;                        // UNDIRECT: ë¬´ë°©í–¥, DIRECT: ë°©í–¥
+    graphNode* adjList_H[MAX_SIZE];  // ê·¸ë˜í”„ ì •ì ì— ëŒ€í•œ í—¤ë“œ í¬ì¸í„°
+    int visited[MAX_SIZE];
+    int pred[MAX_SIZE];
 } Graph;
 
-Graph* createGraph(int type);	// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
-int isEmptyGraph(Graph* G);	// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç
-void insertVertex(Graph* G, int v);	// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
-void insertEdge(Graph* G, int u, int v);	// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
-void destroyGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
-void displayGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ Çà·Ä Á¤º¸ Ãâ·Â 
+Graph* createGraph(int type);             // ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
+int isEmptyGraph(Graph* G);               // ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
+void insertVertex(Graph* G, int v);       // ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
+void insertEdge(Graph* G, int u, int v);  // ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
+void destroyGraph(Graph* G);              // ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
+void displayGraph(Graph* G);              // ê·¸ë˜í”„ Gì˜ ì¸ì ‘ í–‰ë ¬ ì •ë³´ ì¶œë ¥
 
-void initSearch(Graph* G);			// visited[], pred[] ÃÊ±âÈ­ 
-void dfs_iter(Graph* G, int v);		// ±íÀÌ ¿ì¼± Å½»ö iterative version
-void dfs_recur(Graph* G, int v);	// ±íÀÌ ¿ì¼± Å½»ö recursive version
-void bfs(Graph* G, int v);			// ³Êºñ ¿ì¼± Å½»ö 
- 
+void initSearch(Graph* G);        // visited[], pred[] ì´ˆê¸°í™”
+void dfs_iter(Graph* G, int v);   // ê¹Šì´ ìš°ì„  íƒìƒ‰ iterative version
+void dfs_recur(Graph* G, int v);  // ê¹Šì´ ìš°ì„  íƒìƒ‰ recursive version
+void bfs(Graph* G, int v);        // ë„ˆë¹„ ìš°ì„  íƒìƒ‰
+
 #endif
-

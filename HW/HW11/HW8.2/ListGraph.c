@@ -1,79 +1,70 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "ListGraph.h"
 
-// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
 Graph* createGraph(int type) {
-	int i;
-	Graph* G = (Graph*)malloc(sizeof(Graph));	
-	G->n = 0;
-	G->type = type;
-	for(i=0; i<MAX_SIZE; i++) {
-		G->adjList_H[i] = NULL;
-	}
-	return G;
+    int i;
+    Graph* G = (Graph*)malloc(sizeof(Graph));
+    G->n = 0;
+    G->type = type;
+    for (i = 0; i < MAX_SIZE; i++) {
+        G->adjList_H[i] = NULL;
+    }
+    return G;
 }
 
-// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç	
+// ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
 int isEmpty(Graph* G) {
-	return G->n == 0;
+    return G->n == 0;
 }
 
-// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
 void insertVertex(Graph* G, int v) {
-	if((G->n)+1 > MAX_SIZE) {
-		printf("[ERROR] ±×·¡ÇÁ Á¤Á¡ÀÇ °³¼ö ÃÊ°ú\n");
-		return;
-	}
-	G->n++;
+    if ((G->n) + 1 > MAX_SIZE) {
+        printf("[ERROR] ê·¸ë˜í”„ ì •ì ì˜ ê°œìˆ˜ ì´ˆê³¼\n");
+        return;
+    }
+    G->n++;
 }
 
-// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
 void insertEdge(Graph* G, int u, int v) {
-	// Fill your code
-	
-
-
+    // Fill your code
 }
 
-// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »èÁ¦ÇÏ°í ¿¬°áµÈ ¸ğµç °£¼± »èÁ¦
+// ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚­ì œí•˜ê³  ì—°ê²°ëœ ëª¨ë“  ê°„ì„  ì‚­ì œ
 void deleteVertex(Graph* G, int v) {
-	// Fill your code
-
-
-
+    // Fill your code
 }
 
-// ±×·¡ÇÁ G¿¡ °£¼± (u, v)¸¦ »èÁ¦
+// ê·¸ë˜í”„ Gì— ê°„ì„  (u, v)ë¥¼ ì‚­ì œ
 void deleteEdge(Graph* G, int u, int v) {
-	// Fill your code
-
-
-
+    // Fill your code
 }
 
-// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
+// ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
 void destroyGraph(Graph* G) {
-	int i;
-	for(i=0; i<G->n; i++) {
-		if(G->adjList_H[i] != NULL)
-			free(G->adjList_H[i]);
-	}
-	free(G);
+    int i;
+    for (i = 0; i < G->n; i++) {
+        if (G->adjList_H[i] != NULL)
+            free(G->adjList_H[i]);
+    }
+    free(G);
 }
 
-// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ ¸®½ºÆ® Á¤º¸ Ãâ·Â
+// ê·¸ë˜í”„ Gì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ ì •ë³´ ì¶œë ¥
 void displayGraph(Graph* G) {
-	int i;
-	graphNode* p;
-	for(i=0; i<G->n; i++) {
-		printf("Á¤Á¡ %dÀÇ ÀÎÁ¢¸®½ºÆ®", i);
-		p = G->adjList_H[i];
-		while(p) {
-			printf(" -> %d ", p->vertex);
-			p = p->link;
-		}			
-		printf("\n");
-	}
+    int i;
+    graphNode* p;
+    for (i = 0; i < G->n; i++) {
+        printf("ì •ì  %dì˜ ì¸ì ‘ë¦¬ìŠ¤íŠ¸", i);
+        p = G->adjList_H[i];
+        while (p) {
+            printf(" -> %d ", p->vertex);
+            p = p->link;
+        }
+        printf("\n");
+    }
 }
-

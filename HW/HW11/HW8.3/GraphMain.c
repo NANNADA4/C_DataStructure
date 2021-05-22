@@ -1,95 +1,97 @@
 #include <stdio.h>
+
 #include "ListGraph.h"
 
 int main() {
-	int i;
-	Graph *G1, *G2;
+    int i;
+    Graph *G1, *G2;
 
-	G1 = createGraph(DIRECT);
-	G2 = createGraph(DIRECT);
-	
-	// ¹æÇâ ±×·¡ÇÁ G1
-	for(i=0; i<7; i++)
-		insertVertex(G1, i);	// G1ÀÇ Á¤Á¡ 0~6 »ðÀÔ
-	insertEdge(G1, 0, 2); 
-	insertEdge(G1, 0, 1);
-	insertEdge(G1, 1, 4);
-	insertEdge(G1, 1, 3);
-	insertEdge(G1, 1, 0);
-	insertEdge(G1, 2, 4);
-	insertEdge(G1, 2, 0);
-	insertEdge(G1, 3, 6);
-	insertEdge(G1, 3, 1);
-	insertEdge(G1, 4, 6);
-	insertEdge(G1, 4, 2);
-	insertEdge(G1, 4, 1);
-	insertEdge(G1, 5, 6);
-	insertEdge(G1, 6, 5);
-	insertEdge(G1, 6, 4);
-	insertEdge(G1, 6, 3);
-	
-	printf("G1 ÀÎÁ¢¸®½ºÆ®\n");
-	displayGraph(G1);
-	printf("\n");
-	
-	printf("G1 DFS iterative version:\t");
-	dfs_iter(G1, 0);
-	printf("\n");	
-	initSearch(G1);
-	
-	printf("G1 DFS recursive version:\t");
-	dfs_recur(G1, 0);
-	printf("\n");
-	initSearch(G1);
-	
-	printf("G1 BFS:\t");
-	bfs(G1, 0);
-	printf("\n\n");
-	
-	// ¹æÇâ ±×·¡ÇÁ G2
-	for(i=0; i<8; i++)
-		insertVertex(G2, i);	// G2ÀÇ Á¤Á¡ 0~7 »ðÀÔ
-	insertEdge(G2, 0, 2); 
-	insertEdge(G2, 0, 1); 
-	insertEdge(G2, 1, 4); 
-	insertEdge(G2, 1, 3); 
-	insertEdge(G2, 1, 0); 
-	insertEdge(G2, 2, 6); 
-	insertEdge(G2, 2, 5);
-	insertEdge(G2, 2, 0);
-	insertEdge(G2, 3, 7);
-	insertEdge(G2, 3, 1);
-	insertEdge(G2, 4, 7);
-	insertEdge(G2, 4, 1);
-	insertEdge(G2, 5, 7);
-	insertEdge(G2, 5, 2);
-	insertEdge(G2, 6, 7);
-	insertEdge(G2, 6, 2);
-	insertEdge(G2, 7, 6);
-	insertEdge(G2, 7, 5);
-	insertEdge(G2, 7, 4);
-	insertEdge(G2, 7, 3);
-	
-	printf("G2 ÀÎÁ¢¸®½ºÆ®\n");
-	displayGraph(G2);
-	printf("\n");
-	
-	printf("G2 DFS iterative version:\t");
-	dfs_iter(G2, 0);
-	printf("\n");	
-	initSearch(G2);
-	
-	printf("G2 DFS recursive version:\t");
-	dfs_recur(G2, 0);
-	printf("\n");
-	initSearch(G2);
-	
-	printf("G2 BFS:\t");
-	bfs(G2, 0);
-	printf("\n");
+    G1 = createGraph(DIRECT);
+    G2 = createGraph(DIRECT);
 
-	destroyGraph(G1);
-	destroyGraph(G2);
-		 
-	return 0;
+    // ë°©í–¥ ê·¸ëž˜í”„ G1
+    for (i = 0; i < 7; i++) {
+        insertVertex(G1, i);
+    }  // G1ì˜ ì •ì  0~6 ì‚½ìž…
+    insertEdge(G1, 0, 2);
+    insertEdge(G1, 0, 1);
+    insertEdge(G1, 1, 4);
+    insertEdge(G1, 1, 3);
+    insertEdge(G1, 1, 0);
+    insertEdge(G1, 2, 4);
+    insertEdge(G1, 2, 0);
+    insertEdge(G1, 3, 6);
+    insertEdge(G1, 3, 1);
+    insertEdge(G1, 4, 6);
+    insertEdge(G1, 4, 2);
+    insertEdge(G1, 4, 1);
+    insertEdge(G1, 5, 6);
+    insertEdge(G1, 6, 5);
+    insertEdge(G1, 6, 4);
+    insertEdge(G1, 6, 3);
+
+    printf("G1 ì¸ì ‘ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G1);
+    printf("\n");
+
+    printf("G1 DFS iterative version:\t");
+    dfs_iter(G1, 0);
+    printf("\n");
+    initSearch(G1);
+
+    printf("G1 DFS recursive version:\t");
+    dfs_recur(G1, 0);
+    printf("\n");
+    initSearch(G1);
+
+    printf("G1 BFS:\t");
+    bfs(G1, 0);
+    printf("\n\n");
+
+    // ë°©í–¥ ê·¸ëž˜í”„ G2
+    for (i = 0; i < 8; i++)
+        insertVertex(G2, i);  // G2ì˜ ì •ì  0~7 ì‚½ìž…
+    insertEdge(G2, 0, 2);
+    insertEdge(G2, 0, 1);
+    insertEdge(G2, 1, 4);
+    insertEdge(G2, 1, 3);
+    insertEdge(G2, 1, 0);
+    insertEdge(G2, 2, 6);
+    insertEdge(G2, 2, 5);
+    insertEdge(G2, 2, 0);
+    insertEdge(G2, 3, 7);
+    insertEdge(G2, 3, 1);
+    insertEdge(G2, 4, 7);
+    insertEdge(G2, 4, 1);
+    insertEdge(G2, 5, 7);
+    insertEdge(G2, 5, 2);
+    insertEdge(G2, 6, 7);
+    insertEdge(G2, 6, 2);
+    insertEdge(G2, 7, 6);
+    insertEdge(G2, 7, 5);
+    insertEdge(G2, 7, 4);
+    insertEdge(G2, 7, 3);
+
+    printf("G2 ì¸ì ‘ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G2);
+    printf("\n");
+
+    printf("G2 DFS iterative version:\t");
+    dfs_iter(G2, 0);
+    printf("\n");
+    initSearch(G2);
+
+    printf("G2 DFS recursive version:\t");
+    dfs_recur(G2, 0);
+    printf("\n");
+    initSearch(G2);
+
+    printf("G2 BFS:\t");
+    bfs(G2, 0);
+    printf("\n");
+
+    destroyGraph(G1);
+    destroyGraph(G2);
+
+    return 0;
 }

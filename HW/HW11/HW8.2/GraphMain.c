@@ -1,76 +1,78 @@
 #include <stdio.h>
+
 #include "ListGraph.h"
 
 int main() {
-	int i;
-	Graph *G1, *G2, *G3, *G4;
-	G1 = createGraph(UNDIRECT);
-	G2 = createGraph(DIRECT);
-	G3 = createGraph(UNDIRECT);
-	G4 = createGraph(DIRECT);
-	
-	// ¹«¹æÇâ ±×·¡ÇÁ G1
-	for(i=0; i<4; i++)
-		insertVertex(G1, i);	// G1ÀÇ Á¤Á¡ 0~3 »ðÀÔ
-	insertEdge(G1, 0, 1);
-	insertEdge(G1, 0, 3);
-	insertEdge(G1, 1, 2);
-	insertEdge(G1, 1, 3);
-	insertEdge(G1, 2, 3);
-	insertEdge(G1, 1, 0);
-	insertEdge(G1, 3, 2);
-	printf("G1ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G1); 
-	
-	deleteVertex(G1, 2);
-	printf("G1ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G1);
-	
-	// ¹æÇâ ±×·¡ÇÁ G2 
-	for(i=0; i<4; i++)
-		insertVertex(G2, i);	// G2ÀÇ Á¤Á¡ 0~3 »ðÀÔ
-	insertEdge(G2, 0, 1);
-	insertEdge(G2, 0, 3);
-	insertEdge(G2, 1, 2);
-	insertEdge(G2, 1, 3);
-	insertEdge(G2, 2, 3);
-	printf("G2ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G2);
-	
-	deleteVertex(G2, 2);
-	printf("G2ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G2);
-	
-	// ¹«¹æÇâ ±×·¡ÇÁ G3
-	for(i=0; i<3; i++)
-		insertVertex(G3, i);	// G3ÀÇ Á¤Á¡ 0~2 »ðÀÔ
-	insertEdge(G3, 0, 1);
-	insertEdge(G3, 0, 2);
-	insertEdge(G3, 1, 2);
-	printf("G3 ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G3);
-	
-	deleteEdge(G3, 0, 1);
-	printf("G3ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G3);
-	
-	// ¹«¹æÇâ ±×·¡ÇÁ G4
-	for(i=0; i<3; i++)
-		insertVertex(G4, i);	// G4ÀÇ Á¤Á¡ 0~2 »ðÀÔ
-	insertEdge(G4, 0, 1);
-	insertEdge(G4, 0, 2);
-	insertEdge(G4, 1, 2);
-	printf("G4 ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G4);
-	
-	deleteEdge(G4, 0, 1);
-	printf("G4ÀÇ ÀÎÁ¢ ¸®½ºÆ®\n");
-	displayGraph(G4);
+    int i;
+    Graph *G1, *G2, *G3, *G4;
+    G1 = createGraph(UNDIRECT);
+    G2 = createGraph(DIRECT);
+    G3 = createGraph(UNDIRECT);
+    G4 = createGraph(DIRECT);
 
-	destroyGraph(G1);
-	destroyGraph(G2);
-	destroyGraph(G3);
-	destroyGraph(G4);
-		 
-	return 0;
+    // ë¬´ë°©í–¥ ê·¸ëž˜í”„ G1
+    for (i = 0; i < 4; i++) {
+        insertVertex(G1, i);
+    }  // G1ì˜ ì •ì  0~3 ì‚½ìž…
+    insertEdge(G1, 0, 1);
+    insertEdge(G1, 0, 3);
+    insertEdge(G1, 1, 2);
+    insertEdge(G1, 1, 3);
+    insertEdge(G1, 2, 3);
+    insertEdge(G1, 1, 0);
+    insertEdge(G1, 3, 2);
+    printf("G1ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G1);
+
+    deleteVertex(G1, 2);
+    printf("G1ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G1);
+
+    // ë°©í–¥ ê·¸ëž˜í”„ G2
+    for (i = 0; i < 4; i++)
+        insertVertex(G2, i);  // G2ì˜ ì •ì  0~3 ì‚½ìž…
+    insertEdge(G2, 0, 1);
+    insertEdge(G2, 0, 3);
+    insertEdge(G2, 1, 2);
+    insertEdge(G2, 1, 3);
+    insertEdge(G2, 2, 3);
+    printf("G2ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G2);
+
+    deleteVertex(G2, 2);
+    printf("G2ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G2);
+
+    // ë¬´ë°©í–¥ ê·¸ëž˜í”„ G3
+    for (i = 0; i < 3; i++)
+        insertVertex(G3, i);  // G3ì˜ ì •ì  0~2 ì‚½ìž…
+    insertEdge(G3, 0, 1);
+    insertEdge(G3, 0, 2);
+    insertEdge(G3, 1, 2);
+    printf("G3 ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G3);
+
+    deleteEdge(G3, 0, 1);
+    printf("G3ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G3);
+
+    // ë¬´ë°©í–¥ ê·¸ëž˜í”„ G4
+    for (i = 0; i < 3; i++)
+        insertVertex(G4, i);  // G4ì˜ ì •ì  0~2 ì‚½ìž…
+    insertEdge(G4, 0, 1);
+    insertEdge(G4, 0, 2);
+    insertEdge(G4, 1, 2);
+    printf("G4 ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G4);
+
+    deleteEdge(G4, 0, 1);
+    printf("G4ì˜ ì¸ì ‘ ë¦¬ìŠ¤íŠ¸\n");
+    displayGraph(G4);
+
+    destroyGraph(G1);
+    destroyGraph(G2);
+    destroyGraph(G3);
+    destroyGraph(G4);
+
+    return 0;
 }
