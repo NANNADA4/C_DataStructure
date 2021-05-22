@@ -44,7 +44,7 @@ void insertEdge(Graph* G, int u, int v) {
 void deleteVertex(Graph* G, int v) {
     for (int i = 0; i <= G->n; i++) {
         deleteEdge(G, i, v);
-        deleteEdge(G, v, i);
+        // deleteEdge(G, v, i);
     }
 }
 
