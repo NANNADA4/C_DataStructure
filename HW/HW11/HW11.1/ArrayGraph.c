@@ -32,17 +32,26 @@ void insertVertex(Graph* G, int v) {
 
 // 그래프 G에 간선(u, v)를 삽입
 void insertEdge(Graph* G, int u, int v) {
-    // Fill your code
+    if (G->type == UNDIRECT) {
+        G->adjMatrix[u][v] = 1;
+        G->adjMatrix[v][u] = 1;
+    } else {
+        G->adjMatrix[u][v] = 1;
+    }
 }
 
 // 그래프 G에 정점 v를 삭제하고 연결된 모든 간선 삭제
 void deleteVertex(Graph* G, int v) {
-    // Fill your code
+    for (int i = 0; i <= G->n; i++) {
+        deleteEdge(G, i, v);
+        deleteEdge(G, v, i);
+    }
 }
 
 // 그래프 G에 간선 (u, v)를 삭제
 void deleteEdge(Graph* G, int u, int v) {
-    // Fill your code
+    G->adjMatrix[u][v] = 0;
+    G->adjMatrix[v][u] = 0;
 }
 
 // 그래프 G의 리소스 해제

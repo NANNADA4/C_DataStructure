@@ -27,8 +27,9 @@ int main() {
     displayGraph(G1);
 
     // 방향 그래프 G2
-    for (i = 0; i < 4; i++)
-        insertVertex(G2, i);  // G2의 정점 0~3 삽입
+    for (i = 0; i < 4; i++) {
+        insertVertex(G2, i);
+    }  // G2의 정점 0~3 삽입
     insertEdge(G2, 0, 1);
     insertEdge(G2, 0, 3);
     insertEdge(G2, 1, 2);
@@ -42,8 +43,9 @@ int main() {
     displayGraph(G2);
 
     // 무방향 그래프 G3
-    for (i = 0; i < 3; i++)
-        insertVertex(G3, i);  // G3의 정점 0~2 삽입
+    for (i = 0; i < 3; i++) {
+        insertVertex(G3, i);
+    }  // G3의 정점 0~2 삽입
     insertEdge(G3, 0, 1);
     insertEdge(G3, 0, 2);
     insertEdge(G3, 1, 2);
@@ -55,8 +57,9 @@ int main() {
     displayGraph(G3);
 
     // 무방향 그래프 G4
-    for (i = 0; i < 3; i++)
-        insertVertex(G4, i);  // G4의 정점 0~2 삽입
+    for (i = 0; i < 3; i++) {
+        insertVertex(G4, i);
+    }  // G4의 정점 0~2 삽입
     insertEdge(G4, 0, 1);
     insertEdge(G4, 0, 2);
     insertEdge(G4, 1, 2);
