@@ -36,7 +36,26 @@ void insertVertex(Graph* G, int v) {
 
 // 그래프 G에 간선(u, v)를 삽입
 void insertEdge(Graph* G, int u, int v) {
-    // Fill your code (HW8.2)
+    if (G->type == DIRECT) {
+        graphNode* node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = v;
+        node->link = G->adjList_H[u];
+        G->adjList_H[u] = node;
+    } else {
+        graphNode* node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = v;
+        node->link = G->adjList_H[u];
+        G->adjList_H[u] = node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = u;
+        node->link = G->adjList_H[v];
+        G->adjList_H[v] = node;
+    }
 }
 
 // 그래프 G의 리소스 해제
@@ -75,15 +94,54 @@ void initSearch(Graph* G) {
 
 // 깊이 우선 탐색 iterative version
 void dfs_iter(Graph* G, int v) {
-    // Fill your code (HW8.3)
+    // Fill your code(HW8 .3)
+    Stack* S = createStack();
+
+    G->visited[v] = TRUE;
+    push(S, v);
+    visit(v);
+
+    while (!isStackEmpty(S)) {
+        v = Stackpop(S);
+        graphNode* w = G->adjList_H[v];
+        while (w != NULL) {
+            if (G->visited[G->n] == 0) {
+                push(S, v);
+                G->visited[w->vertex] = TRUE;
+                visit(w->vertex);
+                v = w->vertex;
+                w = G->adjList_H[v];
+            } else {
+                w = w->link;
+            }
+        }
+    }
 }
 
 // 깊이 우선 탐색 recursive version
 void dfs_recur(Graph* G, int v) {
-    // Fill your code (HW8.3)
+    G->visited[v] = TRUE;
+    for (graphNode* w = G->adjList_H[v]; w != NULL; w = w->link) {
+        if (G->visited[G->n] == 0) {
+            dfs_recur(G, G->n);
+        }
+    }
 }
 
 // 너비 우선 탐색
 void bfs(Graph* G, int v) {
-    // Fill your code (HW8.3)
+    Queue* Q = create();
+    G->visited[v] = TRUE;
+    enqueue(Q, v);
+    visit(v);
+    while (!isEmpty(Q)) {
+        v = dequeue(Q);
+        for (graphNode* w = G->adjList_H[v]; w != NULL; w = w->link) {
+            if (G->visited[G->n] == 0) {
+                enqueue(Q, w->vertex);
+                G->visited[w->vertex] = TRUE;
+                visit(w->vertex);
+            }
+        }
+    }
 }

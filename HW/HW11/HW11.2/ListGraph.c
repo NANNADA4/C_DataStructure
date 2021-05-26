@@ -31,17 +31,89 @@ void insertVertex(Graph* G, int v) {
 
 // 그래프 G에 간선(u, v)를 삽입
 void insertEdge(Graph* G, int u, int v) {
-    // Fill your code
+    if (G->type == DIRECT) {
+        graphNode* node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = v;
+        node->link = G->adjList_H[u];
+        G->adjList_H[u] = node;
+    } else {
+        graphNode* node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = v;
+        node->link = G->adjList_H[u];
+        G->adjList_H[u] = node;
+
+        node = (graphNode*)malloc(sizeof(graphNode));
+        node->vertex = u;
+        node->link = G->adjList_H[v];
+        G->adjList_H[v] = node;
+    }
 }
 
 // 그래프 G에 정점 v를 삭제하고 연결된 모든 간선 삭제
 void deleteVertex(Graph* G, int v) {
     // Fill your code
+    graphNode *cur, *pre, *tmp;
+
+    for (int i = 0; i < G->n && i != v; i++) {
+        pre = G->adjList_H[i];
+        cur = pre->link;
+        while (cur != NULL) {
+            tmp = cur->link;
+            if (cur->vertex == v) {
+                pre->link = cur->link;
+                free(cur);
+                break;
+            }
+            pre = cur;
+            cur = tmp;
+        }
+    }
+    pre = G->adjList_H[v];
+    cur = G->adjList_H[v]->link;
+
+    while (cur != NULL) {
+        tmp = cur->link;
+        free(cur);
+        cur = tmp;
+    }
+    pre->link = NULL;
 }
 
 // 그래프 G에 간선 (u, v)를 삭제
 void deleteEdge(Graph* G, int u, int v) {
     // Fill your code
+    graphNode *cur, *pre, *tmp;
+
+    pre = G->adjList_H[u];
+    cur = G->adjList_H[u]->link;
+
+    while (cur != NULL) {
+        tmp = cur->link;
+        if (cur->vertex == v) {
+            pre->link = cur->link;
+            free(cur);
+            break;
+        }
+        pre = cur;
+        cur = tmp;
+    }
+
+    pre = G->adjList_H[v];
+    cur = G->adjList_H[v]->link;
+    while (cur != NULL) {
+        tmp = cur->link;
+        if (cur->vertex == u) {
+            pre->link = cur->link;
+            free(cur);
+            break;
+        }
+        pre = cur;
+        cur = tmp;
+    }
 }
 
 // 그래프 G의 리소스 해제
