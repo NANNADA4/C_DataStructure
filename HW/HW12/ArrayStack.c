@@ -1,70 +1,67 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "ArrayStack.h"
 
-// °ø¹é½ºÅÃ »ı¼º
+#include <stdio.h>
+#include <stdlib.h>
+
+// ê³µë°±ìŠ¤íƒ ìƒì„±
 Stack* createStack() {
-	Stack* S = (Stack*)malloc(sizeof(Stack));
-	S->top = -1;
-	return S;
+    Stack* S = (Stack*)malloc(sizeof(Stack));
+    S->top = -1;
+    return S;
 }
 
-// ½ºÅÃÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê					
+// ìŠ¤íƒì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isFullStack(Stack* S) {
-	// Fill your code
-	return S->top == MAX_STACK_SIZE - 1;
+    // Fill your code
+    return S->top == MAX_STACK_SIZE - 1;
 }
 
-// ½ºÅÃÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isEmptyStack(Stack* S) {
-	// Fill your code
-	return S->top == -1;
+    // Fill your code
+    return S->top == -1;
 }
 
-// ½ºÅÃÀÇ top¿¡ ¿ä¼Ò¸¦ Ãß°¡ÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì˜ topì— ìš”ì†Œë¥¼ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
 void push(Stack* S, element x) {
-	// Fill your code
-	if(isFullStack(S)) {
-		printf("Stack is FULL!!\n");
-		return;
-	}
-	else
-		S->stack[++(S->top)] = x;
+    // Fill your code
+    if (isFullStack(S)) {
+        printf("Stack is FULL!!\n");
+        return;
+    } else
+        S->stack[++(S->top)] = x;
 }
 
-// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò »èÁ¦ ¹× ¹İÈ¯ÇÏ´Â ¿¬»ê	
+// ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ì¥ëœ ìš”ì†Œ ì‚­ì œ ë° ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element pop(Stack* S) {
-	// Fill your code
-	if(isEmptyStack(S)) {
-		printf("[ERROR] Stack is EMPTY!!\n");
-		return ERROR;
-	}
-	else
-		return S->stack[(S->top)--];
+    // Fill your code
+    if (isEmptyStack(S)) {
+        printf("[ERROR] Stack is EMPTY!!\n");
+        return ERROR;
+    } else
+        return S->stack[(S->top)--];
 }
 
-// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò¸¦ ¹İÈ¯ÇÏ´Â ¿¬»ê			
+// ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ì¥ëœ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
 element peek(Stack* S) {
-	// Fill your code
-	if(isEmptyStack(S)) {
-		printf("[ERROR] Stack is EMPTY!!\n");
-		return ERROR;
-	}
-	else
-		return S->stack[S->top];
+    // Fill your code
+    if (isEmptyStack(S)) {
+        printf("[ERROR] Stack is EMPTY!!\n");
+        return ERROR;
+    } else
+        return S->stack[S->top];
 }
 
-// ½ºÅÃÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â 			
+// ìŠ¤íƒì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
 void displayStack(Stack* S) {
-	int i;
-	printf("STACK [ "); 
-	for(i=0; i<=S->top; i++)
-		printf("%d ", S->stack[i]);
-	printf(" ]\ttop: %d\n", S->top);
+    int i;
+    printf("STACK [ ");
+    for (i = 0; i <= S->top; i++)
+        printf("%d ", S->stack[i]);
+    printf(" ]\ttop: %d\n", S->top);
 }
 
-// ½ºÅÃ ºñ¿ì±â
+// ìŠ¤íƒ ë¹„ìš°ê¸°
 void clearStack(Stack* S) {
-	S->top = -1;
-}				
-
+    S->top = -1;
+}

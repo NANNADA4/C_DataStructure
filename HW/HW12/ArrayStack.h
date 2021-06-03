@@ -8,19 +8,18 @@
 
 typedef int element;
 
-// StackÀ» ±¸Á¶Ã¼·Î Á¤ÀÇ
+// Stackì„ êµ¬ì¡°ì²´ë¡œ ì •ì˜
 typedef struct ArrayStack {
-	element stack[MAX_STACK_SIZE];
-	int top;
-}Stack;
+    element stack[MAX_STACK_SIZE];
+    int top;
+} Stack;
 
-Stack* createStack();					// °ø¹é½ºÅÃ »ı¼º
-int isFullStack(Stack* S);				// ½ºÅÃÀÌ Æ÷È­»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-int isEmptyStack(Stack* S);				// ½ºÅÃÀÌ °ø¹é»óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
-void push(Stack* S, element x);		// ½ºÅÃÀÇ top¿¡ ¿ä¼Ò¸¦ Ãß°¡ÇÏ´Â ¿¬»ê
-element pop(Stack* S);				// ½ºÅÃ¿¡¼­ ¸¶Áö¸·¿¡ ÀúÀåµÈ ¿ä¼Ò¸¦ ¹İÈ¯ÇÏ´Â ¿¬»ê
-void displayStack(Stack* S);		// ½ºÅÃÀÇ ¸ğµç ¿ä¼Ò Ãâ·Â
-void clearStack(Stack* S);				// ½ºÅÃ ºñ¿ì±â 
+Stack* createStack();            // ê³µë°±ìŠ¤íƒ ìƒì„±
+int isFullStack(Stack* S);       // ìŠ¤íƒì´ í¬í™”ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+int isEmptyStack(Stack* S);      // ìŠ¤íƒì´ ê³µë°±ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
+void push(Stack* S, element x);  // ìŠ¤íƒì˜ topì— ìš”ì†Œë¥¼ ì¶”ê°€í•˜ëŠ” ì—°ì‚°
+element pop(Stack* S);           // ìŠ¤íƒì—ì„œ ë§ˆì§€ë§‰ì— ì €ì¥ëœ ìš”ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” ì—°ì‚°
+void displayStack(Stack* S);     // ìŠ¤íƒì˜ ëª¨ë“  ìš”ì†Œ ì¶œë ¥
+void clearStack(Stack* S);       // ìŠ¤íƒ ë¹„ìš°ê¸°
 
 #endif
-

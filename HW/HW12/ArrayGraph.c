@@ -1,160 +1,149 @@
+#include "ArrayGraph.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArrayGraph.h"
+
 #include "ArrayStack.h"
 
-// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
+// ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
 Graph* createGraph() {
-	int i, j;
-	Graph* G = (Graph*)malloc(sizeof(Graph));	
-	G->n = 0;
-	for(i=0; i<MAX_SIZE; i++) {
-		for(j=0; j<MAX_SIZE; j++) {
-			if(i==j)
-				G->cost[i][j] = 0;
-			else
-				G->cost[i][j] = INF;
-			G->A[i][j] = INF;
-		}
-		G->dist[i] = INF;
-		G->pred[i] = NONE;
-		G->S[i] = 0;
-	}
-	return G;
+    int i, j;
+    Graph* G = (Graph*)malloc(sizeof(Graph));
+    G->n = 0;
+    for (i = 0; i < MAX_SIZE; i++) {
+        for (j = 0; j < MAX_SIZE; j++) {
+            if (i == j)
+                G->cost[i][j] = 0;
+            else
+                G->cost[i][j] = INF;
+            G->A[i][j] = INF;
+        }
+        G->dist[i] = INF;
+        G->pred[i] = NONE;
+        G->S[i] = 0;
+    }
+    return G;
 }
 
-// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç	
+// ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
 int isEmpty(Graph* G) {
-	return G->n == 0;
+    return G->n == 0;
 }
 
-// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
 void insertVertex(Graph* G, int v) {
-	if((G->n)+1 > MAX_SIZE) {
-		printf("[ERROR] ±×·¡ÇÁ Á¤Á¡ÀÇ °³¼ö ÃÊ°ú\n");
-		return;
-	}
-	G->n++;
+    if ((G->n) + 1 > MAX_SIZE) {
+        printf("[ERROR] ê·¸ë˜í”„ ì •ì ì˜ ê°œìˆ˜ ì´ˆê³¼\n");
+        return;
+    }
+    G->n++;
 }
 
-// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
+// ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
 void insertEdge(Graph* G, int u, int v, int weight) {
-	G->cost[u][v] = weight;	
+    G->cost[u][v] = weight;
 }
 
-// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »èÁ¦ÇÏ°í ¿¬°áµÈ ¸ğµç °£¼± »èÁ¦
+// ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚­ì œí•˜ê³  ì—°ê²°ëœ ëª¨ë“  ê°„ì„  ì‚­ì œ
 void deleteVertex(Graph* G, int v) {
-	int i;
-	for(i=0; i<G->n; i++) {
-		G->cost[i][v] = INF;
-		G->cost[v][i] = INF;
-	}	
+    int i;
+    for (i = 0; i < G->n; i++) {
+        G->cost[i][v] = INF;
+        G->cost[v][i] = INF;
+    }
 }
 
-// ±×·¡ÇÁ G¿¡ °£¼± (u, v)¸¦ »èÁ¦
+// ê·¸ë˜í”„ Gì— ê°„ì„  (u, v)ë¥¼ ì‚­ì œ
 void deleteEdge(Graph* G, int u, int v) {
-	G->cost[u][v] = INF;
+    G->cost[u][v] = INF;
 }
 
-// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
+// ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
 void destroyGraph(Graph* G) {
-	int i, j;
-	for(i=0; i<G->n; i++) {
-		for(j=0; j<G->n; j++) {
-			if(i != j)
-				G->cost[i][j] = INF;
-	}
-		G->dist[i] = INF;
-		G->pred[i] = NONE;
-	}
-	G->n = 0;
+    int i, j;
+    for (i = 0; i < G->n; i++) {
+        for (j = 0; j < G->n; j++) {
+            if (i != j)
+                G->cost[i][j] = INF;
+        }
+        G->dist[i] = INF;
+        G->pred[i] = NONE;
+    }
+    G->n = 0;
 }
 
-// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ Çà·Ä Á¤º¸ Ãâ·Â
+// ê·¸ë˜í”„ Gì˜ ì¸ì ‘ í–‰ë ¬ ì •ë³´ ì¶œë ¥
 void displayGraph(Graph* G) {
-	int i, j;
-	for(i=0; i<G->n; i++) {
-		for(j=0; j<G->n; j++){
-			if(G->cost[i][j] == INF)
-				printf("INF\t");
-			else
-				printf("%2d\t", G->cost[i][j]);
-		}			
-		printf("\n");
-	}
+    int i, j;
+    for (i = 0; i < G->n; i++) {
+        for (j = 0; j < G->n; j++) {
+            if (G->cost[i][j] == INF)
+                printf("INF\t");
+            else
+                printf("%2d\t", G->cost[i][j]);
+        }
+        printf("\n");
+    }
 }
 
-// ÃÖ¼Ò ºñ¿ëÀ» °®´Â ´ÙÀ½ Á¤Á¡À» Ã£´Â ¿¬»ê
-// Dijkstra Algorithm ±¸Çö½Ã ÇÊ¿äÇÒ °æ¿ì ÀÌ¿ë 
+// ìµœì†Œ ë¹„ìš©ì„ ê°–ëŠ” ë‹¤ìŒ ì •ì ì„ ì°¾ëŠ” ì—°ì‚°
+// Dijkstra Algorithm êµ¬í˜„ì‹œ í•„ìš”í•  ê²½ìš° ì´ìš©
 int nextVertex(Graph* G) {
-	int i, minCost, minVertex;
-	minCost = INF;
-	minVertex = -1;
-	for(i=0; i<G->n; i++) {
-		if(G->dist[i] < minCost && !G->S[i]) {
-			minCost = G->dist[i];
-			minVertex = i;
-		}
-	}
-	return minVertex;
-}	
+    int i, minCost, minVertex;
+    minCost = INF;
+    minVertex = -1;
+    for (i = 0; i < G->n; i++) {
+        if (G->dist[i] < minCost && !G->S[i]) {
+            minCost = G->dist[i];
+            minVertex = i;
+        }
+    }
+    return minVertex;
+}
 
 // Dijkstra Algorithm
 void dijkstra(Graph* G, int v) {
-	// Fill your code
-	
-
-
+    // Fill your code
 }
 
 // Bellman-Ford Algorithm
 int bellmanFord(Graph* G, int v) {
-	// Fill your code
-	
-
-
-}	
-
-// Floyd-Warshall Algorithm
-void floyd(Graph* G){
-	// Fill your code
-	
-
-
-}	
-
-// ÃÖ´Ü°æ·Î Ãâ·Â
-void printShortestPath(Graph* G, int src, int dst) {
-	printf("%c -> %c ÃÖ´Ü °æ·Î: %c", src+65, dst+65, src+65);
-	int v = dst;
-	Stack* stack = createStack();
-
-	// Fill your code
-
-
-
-
-
-	printf("\n");
-	clearStack(stack);
-}	
-
-// ÃÖ´Ü°æ·Î ºñ¿ë Ãâ·Â
-int printShortestPathCost(Graph* G, int src, int dst) {
-	printf("%c -> %c ÃÖ´Ü °æ·Î ºñ¿ë: %d\n", src+65, dst+65, G->dist[dst]);
+    // Fill your code
 }
 
-// ¸ğµç Á¤Á¡ ½Ö »çÀÌÀÇ ÃÖ´Ü °æ·Î ºñ¿ë Ãâ·Â 
+// Floyd-Warshall Algorithm
+void floyd(Graph* G) {
+    // Fill your code
+}
+
+// ìµœë‹¨ê²½ë¡œ ì¶œë ¥
+void printShortestPath(Graph* G, int src, int dst) {
+    printf("%c -> %c ìµœë‹¨ ê²½ë¡œ: %c", src + 65, dst + 65, src + 65);
+    int v = dst;
+    Stack* stack = createStack();
+
+    // Fill your code
+
+    printf("\n");
+    clearStack(stack);
+}
+
+// ìµœë‹¨ê²½ë¡œ ë¹„ìš© ì¶œë ¥
+int printShortestPathCost(Graph* G, int src, int dst) {
+    printf("%c -> %c ìµœë‹¨ ê²½ë¡œ ë¹„ìš©: %d\n", src + 65, dst + 65, G->dist[dst]);
+}
+
+// ëª¨ë“  ì •ì  ìŒ ì‚¬ì´ì˜ ìµœë‹¨ ê²½ë¡œ ë¹„ìš© ì¶œë ¥
 void printAllPairShortestCost(Graph* G) {
-	int i, j;
-	
-	for(i=0; i<G->n; i++) {
-		for(j=0; j<G->n; j++) {
-			if(G->A[i][j] == INF)
-				printf("INF\t");
-			else
-				printf("%2d\t", G->A[i][j]);
-		}			
-		printf("\n");
-	}
-}		
+    int i, j;
+
+    for (i = 0; i < G->n; i++) {
+        for (j = 0; j < G->n; j++) {
+            if (G->A[i][j] == INF)
+                printf("INF\t");
+            else
+                printf("%2d\t", G->A[i][j]);
+        }
+        printf("\n");
+    }
+}

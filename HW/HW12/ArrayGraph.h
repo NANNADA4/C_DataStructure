@@ -5,31 +5,31 @@
 #define INF 987654321
 #define NONE 9999
 
-// ±×·¡ÇÁ¸¦ ÀÎÁ¢ Çà·Ä·Î Ç¥ÇöÇÏ±â À§ÇÑ ±¸Á¶Ã¼ Á¤ÀÇ
+// ê·¸ë˜í”„ë¥¼ ì¸ì ‘ í–‰ë ¬ë¡œ í‘œí˜„í•˜ê¸° ìœ„í•œ êµ¬ì¡°ì²´ ì •ì˜
 typedef struct GraphType {
-	int n; 
-	int cost[MAX_SIZE][MAX_SIZE];
-	int dist[MAX_SIZE];
-	int pred[MAX_SIZE];
-	int S[MAX_SIZE];
-	int A[MAX_SIZE][MAX_SIZE];
+    int n;
+    int cost[MAX_SIZE][MAX_SIZE];
+    int dist[MAX_SIZE];
+    int pred[MAX_SIZE];
+    int S[MAX_SIZE];
+    int A[MAX_SIZE][MAX_SIZE];
 } Graph;
 
-Graph* createGraph();	// °ø¹é ±×·¡ÇÁ¸¦ »ı¼ºÇÏ´Â ¿¬»ê
-int isEmpty(Graph* G);	// ±×·¡ÇÁ°¡ °ø¹éÀÎÁö °Ë»ç
-void insertVertex(Graph* G, int v);	// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »ğÀÔ
-void insertEdge(Graph* G, int u, int v, int weight);	// ±×·¡ÇÁ G¿¡ °£¼±(u, v)¸¦ »ğÀÔ
-void deleteVertex(Graph* G, int v);	// ±×·¡ÇÁ G¿¡ Á¤Á¡ v¸¦ »èÁ¦ÇÏ°í ¿¬°áµÈ ¸ğµç °£¼± »èÁ¦
-void deleteEdge(Graph* G, int u, int v);  // ±×·¡ÇÁ G¿¡ °£¼± (u, v)¸¦ »èÁ¦
-void destroyGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ¸®¼Ò½º ÇØÁ¦
-void displayGraph(Graph* G);	// ±×·¡ÇÁ GÀÇ ÀÎÁ¢ Çà·Ä Á¤º¸ Ãâ·Â 
+Graph* createGraph();                                 // ê³µë°± ê·¸ë˜í”„ë¥¼ ìƒì„±í•˜ëŠ” ì—°ì‚°
+int isEmpty(Graph* G);                                // ê·¸ë˜í”„ê°€ ê³µë°±ì¸ì§€ ê²€ì‚¬
+void insertVertex(Graph* G, int v);                   // ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚½ì…
+void insertEdge(Graph* G, int u, int v, int weight);  // ê·¸ë˜í”„ Gì— ê°„ì„ (u, v)ë¥¼ ì‚½ì…
+void deleteVertex(Graph* G, int v);                   // ê·¸ë˜í”„ Gì— ì •ì  vë¥¼ ì‚­ì œí•˜ê³  ì—°ê²°ëœ ëª¨ë“  ê°„ì„  ì‚­ì œ
+void deleteEdge(Graph* G, int u, int v);              // ê·¸ë˜í”„ Gì— ê°„ì„  (u, v)ë¥¼ ì‚­ì œ
+void destroyGraph(Graph* G);                          // ê·¸ë˜í”„ Gì˜ ë¦¬ì†ŒìŠ¤ í•´ì œ
+void displayGraph(Graph* G);                          // ê·¸ë˜í”„ Gì˜ ì¸ì ‘ í–‰ë ¬ ì •ë³´ ì¶œë ¥
 
-int nextVertex(Graph* G);	// ÃÖ¼Ò ºñ¿ëÀ» °®´Â ´ÙÀ½ Á¤Á¡À» Ã£´Â ¿¬»ê 
-void dijkstra(Graph* G, int v); // Dijkstra Algorithm
-int bellmanFord(Graph* G, int v);	// Bellman-Ford Algorithm
-void floyd(Graph* G);	// Floyd-Warshall Algorithm
-void printShortestPath(Graph* G, int src, int dst);	// ÃÖ´Ü°æ·Î Ãâ·Â
-int printShortestPathCost(Graph* G, int src, int dst);	// ÃÖ´Ü°æ·Î ºñ¿ë Ãâ·Â
-void printAllPairShortestCost(Graph* G);	// ¸ğµç Á¤Á¡ ½Ö »çÀÌÀÇ ÃÖ´Ü °æ·Î ºñ¿ë Ãâ·Â 
- 
+int nextVertex(Graph* G);                               // ìµœì†Œ ë¹„ìš©ì„ ê°–ëŠ” ë‹¤ìŒ ì •ì ì„ ì°¾ëŠ” ì—°ì‚°
+void dijkstra(Graph* G, int v);                         // Dijkstra Algorithm
+int bellmanFord(Graph* G, int v);                       // Bellman-Ford Algorithm
+void floyd(Graph* G);                                   // Floyd-Warshall Algorithm
+void printShortestPath(Graph* G, int src, int dst);     // ìµœë‹¨ê²½ë¡œ ì¶œë ¥
+int printShortestPathCost(Graph* G, int src, int dst);  // ìµœë‹¨ê²½ë¡œ ë¹„ìš© ì¶œë ¥
+void printAllPairShortestCost(Graph* G);                // ëª¨ë“  ì •ì  ìŒ ì‚¬ì´ì˜ ìµœë‹¨ ê²½ë¡œ ë¹„ìš© ì¶œë ¥
+
 #endif
