@@ -61,8 +61,9 @@ void showPrefixExp(BinTree* bt) {
 }
 
 void showInfixExp(BinTree* bt) {
-    if (bt == NULL)
+    if (bt == NULL) {
         return;
+    }
 
     if (bt->left != NULL || bt->right != NULL)
         printf(" ( ");
