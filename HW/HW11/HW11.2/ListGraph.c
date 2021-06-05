@@ -31,88 +31,114 @@ void insertVertex(Graph* G, int v) {
 
 // 그래프 G에 간선(u, v)를 삽입
 void insertEdge(Graph* G, int u, int v) {
-    if (G->type == DIRECT) {
-        graphNode* node;
+    int chk_redup;
+    graphNode *node, *head;
 
+    chk_redup = 0;  // flag 값처럼 0 : 추가, 1 : 추가안함
+    head = G->adjList_H[u];
+    while (head != NULL) {
+        if (head->vertex == v) {
+            chk_redup = 1;
+            break;
+        }
+        head = head->link;
+    }
+    if (chk_redup == 0) {
         node = (graphNode*)malloc(sizeof(graphNode));
         node->vertex = v;
         node->link = G->adjList_H[u];
         G->adjList_H[u] = node;
-    } else {
-        graphNode* node;
+    }
 
-        node = (graphNode*)malloc(sizeof(graphNode));
-        node->vertex = v;
-        node->link = G->adjList_H[u];
-        G->adjList_H[u] = node;
-
-        node = (graphNode*)malloc(sizeof(graphNode));
-        node->vertex = u;
-        node->link = G->adjList_H[v];
-        G->adjList_H[v] = node;
+    if (G->type == UNDIRECT) {
+        chk_redup = 0;
+        head = G->adjList_H[v];
+        while (head != NULL) {
+            if (head->vertex == u) {
+                chk_redup = 1;
+                break;
+            }
+            head = head->link;
+        }
+        if (chk_redup == 0) {
+            node = (graphNode*)malloc(sizeof(graphNode));
+            node->vertex = u;
+            node->link = G->adjList_H[v];
+            G->adjList_H[v] = node;
+        }
     }
 }
 
 // 그래프 G에 정점 v를 삭제하고 연결된 모든 간선 삭제
 void deleteVertex(Graph* G, int v) {
     // Fill your code
-    graphNode *cur, *pre, *tmp;
+    graphNode *head, *temp;
 
-    for (int i = 0; i < G->n && i != v; i++) {
-        pre = G->adjList_H[i];
-        cur = pre->link;
-        while (cur != NULL) {
-            tmp = cur->link;
-            if (cur->vertex == v) {
-                pre->link = cur->link;
-                free(cur);
-                break;
-            }
-            pre = cur;
-            cur = tmp;
+    while (G->adjList_H[v] != NULL) {
+        head = G->adjList_H[v];
+        G->adjList_H[v] = head->link;
+
+        free(head);
+        head = NULL;
+    }
+
+    for (int i = 0; i < G->n; ++i) {
+        if (i == v) {
+            continue;
         }
+        deleteEdge(G, i, v);
     }
-    pre = G->adjList_H[v];
-    cur = G->adjList_H[v]->link;
-
-    while (cur != NULL) {
-        tmp = cur->link;
-        free(cur);
-        cur = tmp;
-    }
-    pre->link = NULL;
 }
 
 // 그래프 G에 간선 (u, v)를 삭제
 void deleteEdge(Graph* G, int u, int v) {
     // Fill your code
-    graphNode *cur, *pre, *tmp;
+    graphNode *head, *parent;
 
-    pre = G->adjList_H[u];
-    cur = G->adjList_H[u]->link;
-
-    while (cur != NULL) {
-        tmp = cur->link;
-        if (cur->vertex == v) {
-            pre->link = cur->link;
-            free(cur);
-            break;
-        }
-        pre = cur;
-        cur = tmp;
+    head = G->adjList_H[u];
+    if (head == NULL) {
+        return;
     }
 
-    pre = G->adjList_H[v];
-    cur = G->adjList_H[v]->link;
-    while (cur != NULL) {
-        tmp = cur->link;
-        if (cur->vertex == u) {
-            pre->link = cur->link;
-            free(cur);
+    parent = NULL;
+
+    while (head != NULL) {
+        if (head->vertex = v) {
+            if (parent == NULL) {
+                G->adjList_H[u] = head->link;
+            } else {
+                parent->link = head->link;
+            }
+            free(head);
+            head = NULL;
             break;
+        } else {
+            parent = head;
+            head = head->link;
         }
-        pre = cur;
-        cur = tmp;
+    }
+
+    if (G->type == UNDIRECT) {
+        head = G->adjList_H[v];
+        return;
+    }
+
+    parent = NULL;
+
+    while (head != NULL) {
+        if (head->vertex == u) {
+            if (parent == NULL) {
+                G->adjList_H[v] = head->link;
+            } else {
+                parent->link = head->link;
+            }
+            free(head);
+            head = NULL;
+            break;
+        } else {
+            parent = head;
+            head = head->link;
+        }
     }
 }
 

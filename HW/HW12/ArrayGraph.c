@@ -104,6 +104,9 @@ int nextVertex(Graph* G) {
 // Dijkstra Algorithm
 void dijkstra(Graph* G, int v) {
     // Fill your code
+    for (int i = 0; i < v; i++) {
+        G->dist[i] = G->cost[v][i];
+    }
 }
 
 // Bellman-Ford Algorithm

@@ -36,25 +36,41 @@ void insertVertex(Graph* G, int v) {
 
 // 그래프 G에 간선(u, v)를 삽입
 void insertEdge(Graph* G, int u, int v) {
-    if (G->type == DIRECT) {
-        graphNode* node;
+    int chk_redup;
+    graphNode *node, *head;
 
+    chk_redup = 0;  // flag 값처럼 0 : 추가, 1 : 추가안함
+    head = G->adjList_H[u];
+    while (head != NULL) {
+        if (head->vertex == v) {
+            chk_redup = 1;
+            break;
+        }
+        head = head->link;
+    }
+    if (chk_redup == 0) {
         node = (graphNode*)malloc(sizeof(graphNode));
         node->vertex = v;
         node->link = G->adjList_H[u];
         G->adjList_H[u] = node;
-    } else {
-        graphNode* node;
+    }
 
-        node = (graphNode*)malloc(sizeof(graphNode));
-        node->vertex = v;
-        node->link = G->adjList_H[u];
-        G->adjList_H[u] = node;
-
-        node = (graphNode*)malloc(sizeof(graphNode));
-        node->vertex = u;
-        node->link = G->adjList_H[v];
-        G->adjList_H[v] = node;
+    if (G->type == UNDIRECT) {
+        chk_redup = 0;
+        head = G->adjList_H[v];
+        while (head != NULL) {
+            if (head->vertex == u) {
+                chk_redup = 1;
+                break;
+            }
+            head = head->link;
+        }
+        if (chk_redup == 0) {
+            node = (graphNode*)malloc(sizeof(graphNode));
+            node->vertex = u;
+            node->link = G->adjList_H[v];
+            G->adjList_H[v] = node;
+        }
     }
 }
 
@@ -95,53 +111,81 @@ void initSearch(Graph* G) {
 // 깊이 우선 탐색 iterative version
 void dfs_iter(Graph* G, int v) {
     // Fill your code(HW8 .3)
-    Stack* S = createStack();
+    graphNode* node;
 
-    G->visited[v] = TRUE;
-    push(S, v);
-    visit(v);
+    if (!G || !(v < G->n)) {
+        return;
+    }
 
-    while (!isStackEmpty(S)) {
-        v = Stackpop(S);
-        graphNode* w = G->adjList_H[v];
-        while (w != NULL) {
-            if (G->visited[G->n] == 0) {
-                push(S, v);
-                G->visited[w->vertex] = TRUE;
-                visit(w->vertex);
-                v = w->vertex;
-                w = G->adjList_H[v];
-            } else {
-                w = w->link;
+    Stack* stack = createStack();
+    int vertex = v;
+    G->visited[vertex] = TRUE;
+    printf("%d\t", vertex);
+
+    while (1) {
+        node = G->adjList_H[vertex];
+        while (node && G->visited[node->vertex]) {
+            node = node->link;
+        }
+        if (node == NULL) {
+            if (isStackEmpty(stack)) {
+                break;
             }
+            vertex = Stackpop(stack);
+        } else {
+            push(stack, vertex);
+            vertex = node->vertex;
+            G->visited[vertex] = TRUE;
+            printf("%d\t", vertex);
         }
     }
+    Stackclear(stack);
 }
 
 // 깊이 우선 탐색 recursive version
 void dfs_recur(Graph* G, int v) {
+    graphNode* node;
+    int i;
+
+    if (!G || !(v < G->n)) {
+        return;
+    }
     G->visited[v] = TRUE;
-    for (graphNode* w = G->adjList_H[v]; w != NULL; w = w->link) {
-        if (G->visited[G->n] == 0) {
-            dfs_recur(G, G->n);
+    printf("%d\t", v);
+
+    for (node = G->adjList_H[v]; node != NULL; node = node->link) {
+        if (!G->visited[node->vertex]) {
+            dfs_recur(G, node->vertex);
         }
     }
 }
 
 // 너비 우선 탐색
 void bfs(Graph* G, int v) {
-    Queue* Q = create();
-    G->visited[v] = TRUE;
-    enqueue(Q, v);
-    visit(v);
-    while (!isEmpty(Q)) {
-        v = dequeue(Q);
-        for (graphNode* w = G->adjList_H[v]; w != NULL; w = w->link) {
-            if (G->visited[G->n] == 0) {
-                enqueue(Q, w->vertex);
-                G->visited[w->vertex] = TRUE;
-                visit(w->vertex);
-            }
-        }
+    graphNode* node;
+
+    if (!G || !(v < G->n)) {
+        return;
     }
+
+    Queue* queue = createQueue();
+    int vertex = v;
+    G->visited[vertex] = TRUE;
+
+    while (1) {
+        printf("%d\t", vertex);
+        node = G->adjList_H[vertex];
+        while (node) {
+            if (!G->visited[node->vertex]) {
+                enqueue(queue, node->vertex);
+                G->visited[node->vertex] = TRUE;
+            }
+            node = node->link;
+        }
+        if (isEmpty(queue)) {
+            break;
+        }
+        vertex = dequeue(queue);
+    }
+    clearQueue(queue);
 }
