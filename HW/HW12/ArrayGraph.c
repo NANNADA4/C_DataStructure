@@ -104,19 +104,72 @@ int nextVertex(Graph* G) {
 // Dijkstra Algorithm
 void dijkstra(Graph* G, int v) {
     // Fill your code
-    for (int i = 0; i < v; i++) {
-        G->dist[i] = G->cost[v][i];
+    int i, u, w;
+
+    for (i = 0; i < v; i++) {
+        G->pred[i] = G->cost[v][i];
+        if (G->cost[v][i] != INF) {
+            G->pred[i] = v;
+        } else {
+            G->pred[i] = NULL;
+        }
+    }
+
+    for (i = 0; i < v - 1; i++) {
+        u = nextVertex(G);
+        for (w = 0; w < v; w++) {
+            if (!G->S[i]) {
+                G->dist[w] = G->dist[u] + G->cost[u][w];
+                G->pred[w] = u;
+            }
+        }
     }
 }
 
 // Bellman-Ford Algorithm
 int bellmanFord(Graph* G, int v) {
     // Fill your code
+    int i, u;
+
+    for (i = 0; i < v - 1; i++) {
+        for (u = 0; u < v - 1; i++) {
+            if (G->dist[i] > G->dist[u] + G->cost[i][v]) {
+                G->dist[i] = G->dist[u] + G->cost[i][v];
+            }
+        }
+    }
+    for (i = 0; i < v - 1; i++) {
+        for (u = 0; u < v - 1; i++) {
+            if (G->dist[i] > G->dist[u] + G->cost[u][v]) {
+                return FALSE;
+            }
+        }
+    }
+    return TRUE;
 }
 
 // Floyd-Warshall Algorithm
 void floyd(Graph* G) {
     // Fill your code
+    int i, j, k;
+    int A[i][j];
+    int n = G->n;
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - 1; j++) {
+            A[i][j] = G->cost[i][j];
+        }
+    }
+
+    for (k = 0; k < n - 1; k++) {
+        for (i = 0; i < n - 1; i++) {
+            for (j = 0; j < n - 1; j++) {
+                if (A[i][k] + A[k][j] < A[i][j]) {
+                    A[i][j] = A[i][k] + A[k][j];
+                }
+            }
+        }
+    }
 }
 
 // 최단경로 출력
