@@ -3,7 +3,7 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc.exe 활성 파일 빌드",
-            "command": "C:\\MyWorkspace\\C\\MSYS2\\mingw64\\bin\\gcc.exe",
+            "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
             "args": [
                 "-g",
                 "${fileDirname}\\**.c",
